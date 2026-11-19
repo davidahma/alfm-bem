@@ -2,13 +2,19 @@
 import argparse
 import difflib
 import re
+import shutil
 import subprocess
 import unicodedata
 from pathlib import Path
 
 
 def words(path):
-    raw = subprocess.check_output(["pdftotext", "-raw", "-nopgbrk", str(path), "-"])
+    if shutil.which("pdftotext"):
+        command = ["pdftotext", "-raw", "-nopgbrk", str(path), "-"]
+    else:
+        command = ["gs", "-q", "-dSAFER", "-dBATCH", "-dNOPAUSE", "-sDEVICE=txtwrite",
+                   "-dTextFormat=3", "-sOutputFile=-", str(path)]
+    raw = subprocess.check_output(command)
     text = unicodedata.normalize("NFKC", raw.decode("utf-8"))
     text = re.sub(r"(?m)^\s*\d+\s*$", "", text)
     text = re.sub(r"(?<=\w)-\n(?=[a-z])", "", text)
@@ -17,9 +23,10 @@ def words(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--build-dir", type=Path, default=Path("build/paper"))
     parser.add_argument("--compare", type=Path, help="also compare all extracted words")
     args = parser.parse_args()
-    build = Path("build/paper")
+    build = args.build_dir
     log = (build / "alfm-bem.log").read_text(errors="replace")
     warnings = re.findall(
         r"(?im)^.*(?:undefined references|citation .+ undefined|reference .+ undefined|"

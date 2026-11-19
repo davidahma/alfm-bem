@@ -78,7 +78,9 @@ python -m experiments.real_embeddings --output text.local.json
 
 ## Build the paper
 
-Install a TeX Live distribution with pdfLaTeX, BibTeX, Latin Modern, and latexmk. The PDF validation also uses Poppler's `pdftotext`. On Ubuntu install `latexmk texlive-latex-extra lmodern poppler-utils`.
+To reproduce the release PDF with Docker, run `make paper-container`. The first run downloads the pinned TeX Live image. Typesetting then runs offline. CI uses this target and checks the full extracted text against the distributed PDF.
+
+For a native build, install a TeX Live distribution with pdfLaTeX, BibTeX, Latin Modern, and latexmk. Text validation uses Poppler’s `pdftotext` or Ghostscript. On Ubuntu install `latexmk texlive-latex-extra lmodern poppler-utils`.
 
 ```sh
 make paper
