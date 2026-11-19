@@ -1,0 +1,163 @@
+\section{Memory scores, decision policy and adapter bounds}
+\label{app:methodref}
+
+\subsection{What enters the memory}
+
+The memory accepts an embedding and an observed outcome $o\in[-1,1]$.
+The full wrapper starts from a supplied backbone vector, applies a two-layer
+ReLU projection and a chain of residual adapters, and stores the resulting
+normalized vector. The projection starts with random weights. Its optional
+offline training objective is a contrastive softmax loss on same-polarity
+partners and opposite-polarity negatives. The direct memory interface accepts
+a representation chosen by the caller. Neither entry point trains the backbone.
+
+A record is keyed by case identifier, tenant and domain. The wrapper hashes
+the supplied context to obtain the identifier. On a repeated key with $n$
+previous observations, the memory increments the confirmation count, refreshes
+the timestamp and replaces the outcome with $(n o_{\rm old}+o_{\rm new})/(n+1)$.
+It also normalizes $n z_{\rm old}+z_{\rm new}$ after averaging. Confirmations
+count submissions under a key and need not come from independent observers.
+An outcome below $-0.3$ contributes failure evidence, and one above $0.3$
+contributes success evidence. Every stored record contributes to familiarity.
+
+\subsection{Evidence scores for one memory}
+
+Let $s_i$ be the dot product of the normalized query and record $i$.
+The implementation divides by the vector norm plus $10^{-10}$, so a zero
+vector has zero similarity. Let $d_i=\exp(-\lambda a_i)$, where $a_i$ is
+the integer age in days, and let $n_i$ be the confirmation count.
+The severity $v_i$ is $5,4,3,2,1$ on the successive outcome intervals
+$[-1,-0.8)$, $[-0.8,-0.5)$, $[-0.5,0)$, $[0,0.5)$ and $[0.5,1]$.
+
+From failures with $s_i>\tau$, select up to 20 in decreasing similarity
+order to form $F$. Write $[x]_a^b=\min(b,\max(a,x))$. The risk score is
+\begin{align}
+ w_i &= [\alpha\,s_i(v_i/5)d_i n_i]_0^{0.99},\\
+ b_F &=
+ \begin{cases}
+  0.1\max_{i<j,\ i,j\in F} z_i^\top z_j & |F|\geq 2,\\
+  0 & |F|<2,
+ \end{cases}\\
+ R &= \left[1-\prod_{i\in F}(1-w_i)+b_F\right]_0^1 .
+\end{align}
+For all successes $S$ with $s_i>\tau$, the success score is
+\[
+ U=\left[\frac{1}{|S|}\sum_{i\in S}s_i\,\frac{6-v_i}{5}\,d_i\right]_0^1 .
+\]
+An empty evidence set gives zero for its score. The two scores can both be
+high. Shared neighbors, repeated confirmations and the pairwise term make
+a probability interpretation of the noisy-OR unwarranted.
+
+\subsection{Fixed-bandwidth familiarity}
+
+For a memory with $N\geq 10$ records, the default coverage score uses bandwidth
+$h=0.3$. Define
+\[
+ K_h(z,x)=\exp\!\left(-\frac{(1-z^\top x)^2}{2h^2}\right),\qquad
+ D_N(z)=\frac{1}{N}\sum_{i=1}^N K_h(z,z_i).
+\]
+The memory evaluates $D_N$ at up to 256 stored vectors selected at evenly
+spaced record indices, including the selected records' own contributions.
+If $q$ is the 90th percentile of those self-scores, coverage is
+$C(z)=[D_N(z)/\max(q,10^{-12})]_0^1$. Memories with fewer than ten
+records return zero coverage. Rescaling is per memory and clipping can tie
+queries with different unscaled scores.
+
+For each fixed query $z$ and fixed $h>0$, if the stored $Z_i$ are independent
+draws from a common distribution $P$ on the unit sphere, the bounded summands
+obey the strong law of large numbers. Thus
+\[
+ D_N(z)\ \longrightarrow\ \int K_h(z,x)\,dP(x)
+ \qquad\text{almost surely}.
+\]
+The limit measures kernel-weighted probability mass. For example, if
+$P$ is a point mass at $u$, a query orthogonal to $u$ receives the positive
+limit $\exp[-1/(2h^2)]$ despite its neighborhood having zero mass.
+Identifying a pointwise density would require further assumptions, bandwidth
+selection and an appropriate normalization. Deduplication, adaptive feedback
+and pruning can also violate the sampling assumption. The result concerns the
+unscaled kernel mean. It establishes neither convergence of the capped-sample
+calibration quantile nor discrimination between arbitrary distributions.
+
+\subsection{Aggregation, indexing and actions}
+
+The manager reads the global memory, the requested domain memory if present,
+and the requested tenant memory if present. It takes the maximum risk, maximum
+success and arithmetic mean coverage across these memories, including an empty
+global memory. The caller supplies trusted scope identifiers. This partitioning
+rule assumes the application has already checked access to those scopes.
+
+With a cached $N$-by-$d$ embedding matrix, a dense similarity pass takes
+$O(Nd)$ arithmetic. Coverage also averages $N$ kernel values. Failure retrieval
+can sort as many as $N$ candidates and computes the pairwise term on at most
+20 vectors. Recalibrating after a write requires up to $\min(N,256)$ extra
+similarity passes. The optional scikit-learn cosine neighbor index uses brute
+force for unfiltered top-$k$ retrieval. Outcome-filtered retrieval and the
+three decision scores use the dense matrix. There is no logarithmic query-time
+guarantee for the released implementation.
+
+Table~\ref{tab:release-policy} gives the first matching rule for the default
+consensus engine. The user supplies deterministic heuristic checks. At fixed
+risk, success and heuristic results, raising coverage can take a case out of
+the Query region once. It cannot return the case to Query at higher coverage.
+The numeric confidence attached to an action is a policy output.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ll}
+\toprule
+Condition in priority order & Action\\
+\midrule
+Critical rule violated or failed to evaluate & Escalate\\
+$C<0.2$ & Query\\
+$R>0.85$ & Escalate\\
+$R>0.6$ & Abstain\\
+Noncritical rule violated & Abstain\\
+$U>0.7$ & Trust\\
+$C<0.5$ & Query for validation\\
+Otherwise & Trust at low confidence\\
+\bottomrule
+\end{tabular}
+\caption{Action thresholds and precedence. Equalities follow the next applicable rule.}
+\label{tab:release-policy}
+\end{table}
+
+\subsection{What the adapter update bounds}
+
+Let $\theta$ concatenate the trainable parameters of one residual adapter,
+including the affine LayerNorm parameters and biases. For an embedding $z$,
+the adapter normalizes $z+W_2\operatorname{ReLU}(W_1\operatorname{LN}(z)
++b_1)+b_2$. With $s$ the dot product of that output with the normalized replay
+input, the example loss is $1-s$ for $o>0$ and $\max(0,s+0.5)$ otherwise.
+The batch objective adds $\lambda_{\rm reg}\sum_j\|\theta^{(j)}\|_2$,
+where each parameter tensor is flattened separately. The adapter clips
+the gradient of the entire objective jointly, then applies plain SGD with
+zero momentum and zero optimizer weight decay. The code reports the mean
+example loss before regularization.
+
+Let $B=\{v:\|v\|_2\leq r\}$ and $P_B$ be its Euclidean projection.
+Initialization projects all parameters jointly before recording the baseline
+or copying the exponential moving average. With a fixed radius, a finite
+clipped gradient $\|g_t\|_2\leq c$ and step size $\eta_t\geq 0$, the update is
+\[
+ \theta_0=P_B(\theta_{\rm init}),\qquad
+ \theta_{t+1}=P_B(\theta_t-\eta_t g_t).
+\]
+Since $P_B(\theta_t)=\theta_t$ and projection onto a closed convex ball
+is nonexpansive,
+\[
+ \|\theta_{t+1}-\theta_t\|_2
+ \leq\|(\theta_t-\eta_t g_t)-\theta_t\|_2\leq\eta_t c,\qquad
+ \sum_{t=0}^{T-1}\|\theta_{t+1}-\theta_t\|_2\leq c\sum_{t=0}^{T-1}\eta_t .
+\]
+These bounds hold in exact arithmetic. The measured path length
+aggregates the post-projection steps and excludes initialization. Endpoint
+displacement is also bounded by $2r$. A raw weight import starts a new
+measurement interval at its projected state. Loading an older adapter checkpoint
+likewise establishes a fresh baseline for subsequent updates.
+
+The moving average starts in $B$ and remains there by convexity for
+$0\leq\beta\leq1$. Direct adapter calls use live weights by default and the
+wrapper's inference chain uses the moving average. An output-displacement
+bound at a fixed input would additionally require a Lipschitz bound in
+\emph{parameters} along the relevant path. The parameter bound alone
+establishes no decision agreement, task accuracy or retention guarantee.

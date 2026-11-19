@@ -1,0 +1,223 @@
+\section{Fixed-budget review of handwritten digits}
+\label{app:budgetref}
+
+\paragraph{Cases and intervention.}
+The task is to transcribe one handwritten digit. We use all 1,797 labeled
+$8\times8$ images in scikit-learn's bundled \texttt{load\_digits} dataset.
+The pixel arrays are distinct. A review consumes one slot, reveals the recorded
+digit $y$, and replaces the proposed digit $a$ with $y$. An accepted case
+retains $a$. We assume the reviewer returns the recorded digit without delay
+or error. The feedback record keeps the original proposal and its corrected
+label, so a reviewed mistake remains a failure of the original predictor.
+We count both the slots consumed and the loss remaining after review. No
+time or monetary value is assigned to a slot.
+
+\paragraph{Frozen predictor and representation.}
+A NumPy permutation with seed 4701 selects 397 training rows without reference
+to the labels. We divide each pixel by 16 and fit multinomial logistic
+regression with an intercept, $L_2$ penalty, $C=1$, the L-BFGS solver,
+tolerance $10^{-8}$ and at most 500 iterations. The proposed digit is the
+highest-probability class. For retrieval, we subtract the training-set mean
+pixel vector and normalize each resulting vector to unit length. Every method
+uses the same fixed proposals, class probabilities and representation. Training
+rows serve only to fit the predictor and representation. The classifier made
+92 errors on its 1,400 held-out images. All subsequent trials reuse this
+model and pool.
+
+\paragraph{Who sees which labels.}
+For each seed from 0 through 11, a new label-independent permutation divides
+the pool into four disjoint parts. The first 150 cases supply the same fully
+reviewed initial memory to all methods. The next 150 are a fully labeled
+calibration set, used only to set mixture weights and neighborhood sizes.
+The following 500 cases arrive in ten batches of 50. Each method ranks a
+complete batch, commits to five reviews, and receives only those five labels
+before the next batch. Earlier arrivals break ties after scores are rounded
+to 12 decimal places. Each adaptive history thus contains the same 150
+initial labels and 50 additional labels selected by that method.
+
+The final 600 cases arrive in twelve more batches. At this boundary we freeze
+each history and evaluate two review policies on the same cases. Each policy
+again receives five slots per batch. The evaluator uses the labels to count
+losses and corrections. No future label updates a score, a weight or a memory.
+The two future evaluations are counterfactual alternatives, each with 60
+reviews. A replay allocates 410 post-training labels per policy (150 initial,
+150 calibration, 50 stream and 60 future). The frozen classifier can operate
+without the historical review labels. Equal access here isolates the choice
+of cases to review at a given capacity.
+
+\paragraph{Changing the cost of a mistake.}
+During the stream every error costs one. We first retain this policy on the
+future batches, then use the cost $|a-y|$ on those same batches. For example,
+reading a 1 as a 9 now costs eight units, and reading an 8 as a 9 costs one.
+The cost schedules are specified in advance and both can use the original
+calibration labels. This models a change from class accuracy to accuracy of a
+numerical entry. The distance cost is a chosen utility function. The observed
+labels and classifier errors come from the dataset. A review changes the final
+answer in the current case. Any benefit from acquiring feedback is measured
+separately by scoring the same future batches with just the initial memory.
+
+\paragraph{Comparators and calibration.}
+Arrival order takes the first five cases in a randomly ordered batch.
+Nearest failure ranks by maximum cosine similarity to a reviewed error.
+The frozen rule uses $1-\max_c p(c\mid x)$ under unit loss. Under the
+changed policy it uses $\sum_c p(c\mid x)|a-c|$, retaining the original
+proposal $a$. Thus the classifier alone can respond to the cost change.
+
+Two local votes use the same cosine neighbors and paid reviews. The outcome
+vote averages the realized losses of the neighbors' own proposals. The
+class-label vote estimates the digit distribution from their corrected labels
+and applies the loss of the \emph{current} proposal to each of those labels.
+For example, a correctly predicted neighboring 2 contributes zero past
+error to the outcome vote, but supports review when the current proposal
+is 7. A neighbor of cosine similarity $s$ has weight
+$1/\max(1-s,10^{-8})$ before normalization. Each vote can combine its
+estimate with the frozen score. For each objective separately, we choose
+$k\in\{3,7,15\}$ and local weight $w\in\{0,0.25,0.5,0.75,1\}$ to minimize
+mean squared error against realized loss on the 150 calibration cases,
+using only the initial memory as neighbors. Ties favor smaller $k$, then
+smaller $w$. These settings stay fixed for the rest of the replay.
+
+\paragraph{Deployed BEM score and matched blends.}
+We insert each reviewed embedding through
+\texttt{BidirectionalExperienceMemory.add\_experience} and rank the batch by
+its public \texttt{risk\_signal}. We use the package defaults for cosine
+threshold (0.5) and risk sensitivity (0.8), with time decay disabled in
+this undated replay. The risk score uses similar stored failures. Successes
+are recorded but do not contribute to this read operation. The batch quota
+is imposed by the experiment. We evaluate this risk component with a fixed
+representation and without adapter updates.
+
+For sign-only memory, success receives $+1$ and error receives $-1$.
+For the changed cost, graded BEM re-encodes a reviewed error of distance $d$
+as $-(0.35+0.65d/9)$. All nine possible distances pass the package's failure
+threshold. Its severity buckets map distances 1--2, 3--6 and 7--9 to
+severities 3, 4 and 5, respectively. We replay the exact same reviewed
+records into the sign and graded memories. The encoding is computed entirely
+from the paid historical labels.
+
+We also give BEM the same opportunity to use the frozen score as either vote.
+For both encodings we minimize the same calibration loss over the same five
+weights in $wR+(1-w)F$, with $R$ the BEM score and $F$ the frozen score.
+Under distance loss we first multiply $R$ by the mean distance of errors
+in the initial memory, common to both encodings, to express the blend in
+digit-distance units. The fallback scale for an error-free initial memory is
+one. The sign and graded blends share the review history collected by the
+unit-loss blend. Raw BEM collects its own history during the stream.
+Comparisons between those two histories measure the complete review policy.
+
+\begin{table}[htbp]
+\centering
+\caption{Paid reviews and their downstream outcomes. The stream columns cover
+600 reviews and 412 underlying errors in 6,000 presentations. Each future
+policy has 720 reviews, 454 underlying errors and 2,074 available
+digit-distance units in 7,200 presentations. Counts pool 12 paired replays.}
+\label{tab:digit-budget}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & Stream & \multicolumn{2}{c}{Future, unit cost} &
+   \multicolumn{2}{c}{Future, distance cost} \\
+\cmidrule(lr){3-4}\cmidrule(l){5-6}
+Ranking & Caught & Caught & Left & Saved & Left \\
+\midrule
+Arrival order             &  33 &  41 & 413 &  184 & 1,890 \\
+Nearest failure           & 143 & 176 & 278 &  944 & 1,130 \\
+BEM risk, sign            & 140 & 178 & 276 &  959 & 1,115 \\
+BEM risk, graded          & 140 & 178 & 276 &  975 & 1,099 \\
+Frozen predictor          & 259 & 291 & 163 & 1,349 & 725 \\
+BEM sign + frozen         & 251 & 291 & 163 & 1,454 & 620 \\
+BEM graded + frozen       & 251 & 291 & 163 & 1,455 & 619 \\
+Outcome vote + frozen     & 257 & 319 & 135 & 1,531 & 543 \\
+Class-label vote + frozen & 303 & 379 &  75 & 1,693 & 381 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Performance on future decisions.}
+Table~\ref{tab:digit-budget} counts corrected errors under unit cost and
+distance avoided under the changed cost. The class-label vote caught
+379/454 errors (83.5\%), compared with 291/454 (64.1\%) for frozen confidence
+and 178/454 (39.2\%) for raw BEM. Of the 6,480 automatically accepted
+predictions, 75, 163 and 276, respectively, were wrong. With 720 perfect
+reviews included, the corresponding end-to-end accuracies were 98.96\%,
+97.74\% and 96.17\%. These totals count case presentations since each image
+can recur in other seeds. The raw BEM advantage over nearest failure was
+0.17 errors caught per seed (95\% interval $[-1.17,1.58]$).
+
+Updating the class-label vote with its 50 paid stream labels changed 155 of
+its 720 future review slots relative to its initial-memory version and
+caught 41 more future errors, or 3.42 per seed $[1.83,5.00]$.
+Raw BEM changed 200 slots and caught 25 more, or 2.08 per seed
+$[0.83,3.33]$. In the matched BEM blend, 160 slots changed but the total
+caught fell by three, a difference of $-0.25$ per seed $[-1.67,0.92]$.
+Acquiring labels can change a review decision without improving its outcome.
+
+\paragraph{What blending and grading changed.}
+Under unit loss, calibration assigned positive weight to BEM in ten seeds
+($w=0.25$ in seven and $w=0.5$ in three). The matched blend and frozen
+confidence caught the same total, with a paired difference of 0.00 errors
+per seed $[-2.25,2.08]$. The class-label and outcome votes caught 7.33
+$[5.08,9.83]$ and 2.33 $[0.42,4.67]$ more errors per seed than the matched
+BEM blend.
+
+Under the changed cost, re-encoding raw BEM displaced 60 of 720 reviews
+and saved 16 additional distance units, or 1.33 per seed $[-1.67,4.50]$.
+The signed and graded BEM blends each used positive BEM weight in nine
+seeds. The graded blend saved 106 more distance units than the frozen
+expected-loss rule, or 8.83 per seed $[2.50,15.42]$, and one more unit
+than the signed blend, or 0.08 per seed $[-2.83,3.50]$. The class-label
+vote saved 19.83 more units per seed than the graded blend $[13.58,27.42]$.
+The data support a gain over the frozen cost-sensitive rule for this blend
+in these replays. The incremental contribution of graded encoding is
+unresolved.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Paired future results by replay seed. Under unit loss the entries
+count corrected errors out of the available errors. The final columns give
+extra distance units saved by the graded BEM blend against each comparator
+under the changed cost. Every cell uses the same 60 review slots per method
+and seed.}
+\label{tab:digit-paired}
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+ & & \multicolumn{3}{c}{Errors caught} & \multicolumn{2}{c}{Graded blend gain} \\
+\cmidrule(lr){3-5}\cmidrule(l){6-7}
+Seed & Errors & Frozen & BEM blend & Class vote & vs.\ frozen & vs.\ sign blend \\
+\midrule
+0 & 40 & 28 & 23 & 30 & 0 & 0 \\
+1 & 35 & 22 & 27 & 31 & 10 & 4 \\
+2 & 42 & 20 & 23 & 36 & 26 & -6 \\
+3 & 38 & 27 & 26 & 33 & 4 & -9 \\
+4 & 36 & 21 & 26 & 32 & 30 & 0 \\
+5 & 44 & 28 & 28 & 28 & 0 & 0 \\
+6 & 32 & 24 & 20 & 28 & -13 & -5 \\
+7 & 35 & 21 & 25 & 31 & 8 & 0 \\
+8 & 35 & 23 & 24 & 29 & 13 & 3 \\
+9 & 40 & 26 & 18 & 35 & 18 & 15 \\
+10 & 31 & 21 & 21 & 26 & 0 & 0 \\
+11 & 46 & 30 & 30 & 40 & 10 & -1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Uncertainty, scope and reproduction.}
+Table~\ref{tab:digit-paired} shows how the effect varies by replay.
+Each interval is the 2.5th and 97.5th percentile of 10,000 bootstrap means
+of paired differences, resampling the twelve whole seeds with replacement
+(NumPy seed 15001). All methods share the same batches within a draw.
+The intervals describe sensitivity to random partitions and arrival order
+on this finite corpus, conditional on the one trained classifier. They give
+no independent replication across populations, writers or trained models.
+The arrivals have simulated order, the reviewer is perfect, and the changed
+cost is announced. There is no observed production shift, human review cost,
+or evidence about language-model responses in this experiment.
+
+From the release root with its environment active, reproduce the per-seed
+counts, calibrated weights, selection comparisons and paired intervals with
+\begin{verbatim}
+python -m experiments.budget_benchmark --check results/budget.json
+\end{verbatim}
+The check uses the packaged digit data, one numerical thread and the
+repository's BEM implementation. It requires exact counts and review-order
+hashes, and tolerates floating-point roundoff in the reported summaries.

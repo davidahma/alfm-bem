@@ -1,0 +1,16 @@
+\paragraph{A common review budget.}
+The frozen predictor made 454 errors across 7,200 future case presentations. Each policy referred 720 cases. Figure~\ref{fig:review} counts the errors caught by a perfect reviewer. Each seed reuses a subset of the same finite corpus. The totals are paired replay counts; the same digit can appear in more than one replay.
+\begin{figure}[htbp]\centering
+\begin{tabular}{@{}lrl@{}}\toprule
+Review ranking & Errors caught & Share of underlying errors\\\midrule
+Arrival order & 41 & \textcolor{teal!70!black}{\rule{2.80mm}{1.25ex}}\hspace{0.45em}9.0\%\\
+Nearest failure & 176 & \textcolor{teal!70!black}{\rule{12.02mm}{1.25ex}}\hspace{0.45em}38.8\%\\
+BEM risk & 178 & \textcolor{teal!70!black}{\rule{12.15mm}{1.25ex}}\hspace{0.45em}39.2\%\\
+Frozen confidence & 291 & \textcolor{teal!70!black}{\rule{19.87mm}{1.25ex}}\hspace{0.45em}64.1\%\\
+Confidence and BEM risk & 291 & \textcolor{teal!70!black}{\rule{19.87mm}{1.25ex}}\hspace{0.45em}64.1\%\\
+Joint BEM scores and confidence & 290 & \textcolor{teal!70!black}{\rule{19.80mm}{1.25ex}}\hspace{0.45em}63.9\%\\
+Confidence and outcome vote & 319 & \textcolor{teal!70!black}{\rule{21.78mm}{1.25ex}}\hspace{0.45em}70.3\%\\
+Confidence and class vote & 379 & \textcolor{teal!70!black}{\rule{25.88mm}{1.25ex}}\hspace{0.45em}83.5\%\\
+\bottomrule\end{tabular}
+\caption{Errors selected for review at identical capacity (five referrals per batch of fifty). The votes combine local evidence with classifier confidence using held-out calibration. Appendix~\ref{app:budgetref} gives the calibration protocol, uncertainty and cost-sensitive comparisons.}
+\label{fig:review}\end{figure}

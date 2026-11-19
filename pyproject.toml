@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alfm-bem"
+version = "0.2.0"
+description = "Outcome-conditioned experience memory and selective prediction for frozen models"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE.md"]
+authors = [{name = "David Ahmann"}]
+dependencies = ["numpy>=1.26,<3", "scikit-learn>=1.4,<2", "torch>=2.4,<3"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+research = ["threadpoolctl>=3.1,<4"]
+text = ["sentence-transformers>=5,<6", "transformers>=4.46,<5"]
+
+[project.urls]
+Repository = "https://github.com/davidahma/alfm-bem"
+Paper = "https://github.com/davidahma/alfm-bem/releases"
+Issues = "https://github.com/davidahma/alfm-bem/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

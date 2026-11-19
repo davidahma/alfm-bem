@@ -1,0 +1,6166 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "dataset": "sklearn.datasets.load_digits",
+    "train_seed": 4701,
+    "batch": 50,
+    "reviews_per_batch": 5,
+    "bootstrap_draws": 10000
+  },
+  "train": {
+    "n": 397,
+    "errors": 3,
+    "distance": 15
+  },
+  "pool": {
+    "n": 1400,
+    "errors": 92,
+    "distance": 436
+  },
+  "summary": {
+    "unit": {
+      "methods": {
+        "arrival": {
+          "total_removed": 41,
+          "total_remaining": 413,
+          "gain_from_feedback_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 0,
+          "total_slots_changed_from_unit": 0
+        },
+        "frozen": {
+          "total_removed": 291,
+          "total_remaining": 163,
+          "gain_from_feedback_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 0,
+          "total_slots_changed_from_unit": 0
+        },
+        "outcome_vote": {
+          "total_removed": 319,
+          "total_remaining": 135,
+          "gain_from_feedback_per_seed": {
+            "mean": 0.8333333333333334,
+            "percentile_95": [
+              -0.3333333333333333,
+              2.0833333333333335
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 168,
+          "total_slots_changed_from_unit": 0
+        },
+        "class_vote": {
+          "total_removed": 379,
+          "total_remaining": 75,
+          "gain_from_feedback_per_seed": {
+            "mean": 3.4166666666666665,
+            "percentile_95": [
+              1.8333333333333333,
+              5.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 155,
+          "total_slots_changed_from_unit": 0
+        },
+        "failure_only": {
+          "total_removed": 176,
+          "total_remaining": 278,
+          "gain_from_feedback_per_seed": {
+            "mean": 1.3333333333333333,
+            "percentile_95": [
+              -0.08333333333333333,
+              2.75
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 142,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_sign": {
+          "total_removed": 178,
+          "total_remaining": 276,
+          "gain_from_feedback_per_seed": {
+            "mean": 2.0833333333333335,
+            "percentile_95": [
+              0.8333333333333334,
+              3.3333333333333335
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 200,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_sign_blend": {
+          "total_removed": 291,
+          "total_remaining": 163,
+          "gain_from_feedback_per_seed": {
+            "mean": -0.25,
+            "percentile_95": [
+              -1.6666666666666667,
+              0.9166666666666666
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 160,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_joint_blend": {
+          "total_removed": 290,
+          "total_remaining": 164,
+          "gain_from_feedback_per_seed": {
+            "mean": -0.3333333333333333,
+            "percentile_95": [
+              -1.0833333333333333,
+              0.16666666666666666
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 30,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_graded": {
+          "total_removed": 178,
+          "total_remaining": 276,
+          "gain_from_feedback_per_seed": {
+            "mean": 2.0833333333333335,
+            "percentile_95": [
+              0.8333333333333334,
+              3.3333333333333335
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 200,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_graded_blend": {
+          "total_removed": 291,
+          "total_remaining": 163,
+          "gain_from_feedback_per_seed": {
+            "mean": -0.25,
+            "percentile_95": [
+              -1.6666666666666667,
+              0.9166666666666666
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 160,
+          "total_slots_changed_from_unit": 0
+        }
+      },
+      "paired_removed_per_seed": {
+        "bem_graded_minus_bem_sign": {
+          "mean": 0.0,
+          "percentile_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "bem_graded_minus_class_vote": {
+          "mean": -16.75,
+          "percentile_95": [
+            -19.583333333333332,
+            -14.25
+          ]
+        },
+        "bem_graded_minus_outcome_vote": {
+          "mean": -11.75,
+          "percentile_95": [
+            -14.416666666666666,
+            -9.416666666666666
+          ]
+        },
+        "bem_graded_minus_frozen": {
+          "mean": -9.416666666666666,
+          "percentile_95": [
+            -12.0,
+            -6.75
+          ]
+        },
+        "bem_graded_minus_failure_only": {
+          "mean": 0.16666666666666666,
+          "percentile_95": [
+            -1.1666666666666667,
+            1.5833333333333333
+          ]
+        },
+        "class_vote_minus_frozen": {
+          "mean": 7.333333333333333,
+          "percentile_95": [
+            5.0,
+            9.666666666666666
+          ]
+        },
+        "bem_graded_blend_minus_bem_sign_blend": {
+          "mean": 0.0,
+          "percentile_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "bem_graded_blend_minus_frozen": {
+          "mean": 0.0,
+          "percentile_95": [
+            -2.25,
+            2.0833333333333335
+          ]
+        },
+        "bem_sign_blend_minus_frozen": {
+          "mean": 0.0,
+          "percentile_95": [
+            -2.25,
+            2.0833333333333335
+          ]
+        },
+        "bem_graded_blend_minus_class_vote": {
+          "mean": -7.333333333333333,
+          "percentile_95": [
+            -9.833333333333334,
+            -5.083333333333333
+          ]
+        },
+        "bem_graded_blend_minus_outcome_vote": {
+          "mean": -2.3333333333333335,
+          "percentile_95": [
+            -4.666666666666667,
+            -0.4166666666666667
+          ]
+        },
+        "bem_joint_blend_minus_frozen": {
+          "mean": -0.08333333333333333,
+          "percentile_95": [
+            -0.5,
+            0.25
+          ]
+        },
+        "bem_joint_blend_minus_bem_graded_blend": {
+          "mean": -0.08333333333333333,
+          "percentile_95": [
+            -2.0833333333333335,
+            2.0833333333333335
+          ]
+        },
+        "bem_joint_blend_minus_outcome_vote": {
+          "mean": -2.4166666666666665,
+          "percentile_95": [
+            -4.416666666666667,
+            -0.25
+          ]
+        },
+        "bem_joint_blend_minus_class_vote": {
+          "mean": -7.416666666666667,
+          "percentile_95": [
+            -9.666666666666666,
+            -5.166666666666667
+          ]
+        }
+      }
+    },
+    "distance": {
+      "methods": {
+        "arrival": {
+          "total_removed": 184,
+          "total_remaining": 1890,
+          "gain_from_feedback_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 0,
+          "total_slots_changed_from_unit": 0
+        },
+        "frozen": {
+          "total_removed": 1349,
+          "total_remaining": 725,
+          "gain_from_feedback_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 15.833333333333334,
+            "percentile_95": [
+              9.75,
+              22.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 0,
+          "total_slots_changed_from_unit": 215
+        },
+        "outcome_vote": {
+          "total_removed": 1531,
+          "total_remaining": 543,
+          "gain_from_feedback_per_seed": {
+            "mean": 1.75,
+            "percentile_95": [
+              -7.833333333333333,
+              13.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 3.4166666666666665,
+            "percentile_95": [
+              -1.9166666666666667,
+              9.083333333333334
+            ]
+          },
+          "total_slots_changed_by_feedback": 144,
+          "total_slots_changed_from_unit": 216
+        },
+        "class_vote": {
+          "total_removed": 1693,
+          "total_remaining": 381,
+          "gain_from_feedback_per_seed": {
+            "mean": 11.0,
+            "percentile_95": [
+              5.166666666666667,
+              17.666666666666668
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.8333333333333334,
+            "percentile_95": [
+              -5.416666666666667,
+              7.752083333333303
+            ]
+          },
+          "total_slots_changed_by_feedback": 146,
+          "total_slots_changed_from_unit": 197
+        },
+        "failure_only": {
+          "total_removed": 944,
+          "total_remaining": 1130,
+          "gain_from_feedback_per_seed": {
+            "mean": 3.0833333333333335,
+            "percentile_95": [
+              -2.4166666666666665,
+              8.916666666666666
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 142,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_sign": {
+          "total_removed": 959,
+          "total_remaining": 1115,
+          "gain_from_feedback_per_seed": {
+            "mean": 7.833333333333333,
+            "percentile_95": [
+              2.8333333333333335,
+              12.333333333333334
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 0.0,
+            "percentile_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "total_slots_changed_by_feedback": 200,
+          "total_slots_changed_from_unit": 0
+        },
+        "bem_sign_blend": {
+          "total_removed": 1454,
+          "total_remaining": 620,
+          "gain_from_feedback_per_seed": {
+            "mean": 1.8333333333333333,
+            "percentile_95": [
+              -0.75,
+              4.583333333333333
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 14.5,
+            "percentile_95": [
+              8.416666666666666,
+              20.333333333333332
+            ]
+          },
+          "total_slots_changed_by_feedback": 132,
+          "total_slots_changed_from_unit": 209
+        },
+        "bem_joint_blend": {
+          "total_removed": 1353,
+          "total_remaining": 721,
+          "gain_from_feedback_per_seed": {
+            "mean": 0.5833333333333334,
+            "percentile_95": [
+              0.0,
+              1.75
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 14.5,
+            "percentile_95": [
+              8.666666666666666,
+              20.666666666666668
+            ]
+          },
+          "total_slots_changed_by_feedback": 17,
+          "total_slots_changed_from_unit": 221
+        },
+        "bem_graded": {
+          "total_removed": 975,
+          "total_remaining": 1099,
+          "gain_from_feedback_per_seed": {
+            "mean": 8.916666666666666,
+            "percentile_95": [
+              3.831250000000002,
+              14.083333333333334
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 1.3333333333333333,
+            "percentile_95": [
+              -1.6666666666666667,
+              4.5
+            ]
+          },
+          "total_slots_changed_by_feedback": 190,
+          "total_slots_changed_from_unit": 60
+        },
+        "bem_graded_blend": {
+          "total_removed": 1455,
+          "total_remaining": 619,
+          "gain_from_feedback_per_seed": {
+            "mean": 1.75,
+            "percentile_95": [
+              -2.5833333333333335,
+              6.0
+            ]
+          },
+          "gain_from_policy_change_per_seed": {
+            "mean": 14.583333333333334,
+            "percentile_95": [
+              6.666666666666667,
+              22.66874999999997
+            ]
+          },
+          "total_slots_changed_by_feedback": 122,
+          "total_slots_changed_from_unit": 234
+        }
+      },
+      "paired_removed_per_seed": {
+        "bem_graded_minus_bem_sign": {
+          "mean": 1.3333333333333333,
+          "percentile_95": [
+            -1.6666666666666667,
+            4.5
+          ]
+        },
+        "bem_graded_minus_class_vote": {
+          "mean": -59.833333333333336,
+          "percentile_95": [
+            -74.58333333333333,
+            -46.916666666666664
+          ]
+        },
+        "bem_graded_minus_outcome_vote": {
+          "mean": -46.333333333333336,
+          "percentile_95": [
+            -63.25208333333333,
+            -33.33125000000003
+          ]
+        },
+        "bem_graded_minus_frozen": {
+          "mean": -31.166666666666668,
+          "percentile_95": [
+            -42.833333333333336,
+            -17.666666666666668
+          ]
+        },
+        "bem_graded_minus_failure_only": {
+          "mean": 2.5833333333333335,
+          "percentile_95": [
+            -3.1666666666666665,
+            8.333333333333334
+          ]
+        },
+        "class_vote_minus_frozen": {
+          "mean": 28.666666666666668,
+          "percentile_95": [
+            17.5,
+            41.416666666666664
+          ]
+        },
+        "bem_graded_blend_minus_bem_sign_blend": {
+          "mean": 0.08333333333333333,
+          "percentile_95": [
+            -2.8333333333333335,
+            3.5
+          ]
+        },
+        "bem_graded_blend_minus_frozen": {
+          "mean": 8.833333333333334,
+          "percentile_95": [
+            2.4979166666666686,
+            15.418749999999969
+          ]
+        },
+        "bem_sign_blend_minus_frozen": {
+          "mean": 8.75,
+          "percentile_95": [
+            2.6666666666666665,
+            15.583333333333334
+          ]
+        },
+        "bem_graded_blend_minus_class_vote": {
+          "mean": -19.833333333333332,
+          "percentile_95": [
+            -27.416666666666668,
+            -13.583333333333334
+          ]
+        },
+        "bem_graded_blend_minus_outcome_vote": {
+          "mean": -6.333333333333333,
+          "percentile_95": [
+            -16.083333333333332,
+            3.4166666666666665
+          ]
+        },
+        "bem_joint_blend_minus_frozen": {
+          "mean": 0.3333333333333333,
+          "percentile_95": [
+            0.0,
+            1.0
+          ]
+        },
+        "bem_joint_blend_minus_bem_graded_blend": {
+          "mean": -8.5,
+          "percentile_95": [
+            -15.333333333333334,
+            -1.5833333333333333
+          ]
+        },
+        "bem_joint_blend_minus_outcome_vote": {
+          "mean": -14.833333333333334,
+          "percentile_95": [
+            -26.833333333333332,
+            -3.25
+          ]
+        },
+        "bem_joint_blend_minus_class_vote": {
+          "mean": -28.333333333333332,
+          "percentile_95": [
+            -41.25,
+            -16.916666666666668
+          ]
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 11,
+          "distance": 55
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 11,
+          "distance": 51
+        },
+        "stream": {
+          "n": 500,
+          "errors": 30,
+          "distance": 145
+        },
+        "future": {
+          "n": 600,
+          "errors": 40,
+          "distance": 185
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            3,
+            0.25
+          ],
+          "distance": [
+            15,
+            0.25
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.25
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.0
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.0
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.046322211107
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.485646720665
+        }
+      },
+      "initial_distance_per_error": 5.0,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 1,
+            "distance": 1
+          },
+          "stream_review_order_sha256": "89cfd5968abb9cac669aad65e9f18903d0f44ab0c69600155b631b240a5c428f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 6,
+                "distance": 34
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 6,
+                "distance": 34
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 6,
+                "distance": 34
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 6,
+                "distance": 34
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 19,
+            "distance": 80
+          },
+          "stream_review_order_sha256": "8c3401549f1f4b7df56ad4e3d9d7a6cbc25be9a06bb927b9963455c8cfe9841d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 22
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 21,
+            "distance": 102
+          },
+          "stream_review_order_sha256": "7a989e2c2c825397e8966cdb2c98d797f1c2bd27fa4f0b205b7a8a236602c85e",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 121
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 127
+              },
+              "slots_changed_by_feedback": 6,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 141
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 143
+              },
+              "slots_changed_by_feedback": 5,
+              "slots_changed_from_unit": 23
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 105
+          },
+          "stream_review_order_sha256": "1470cbc4fa83292074a572dcca12845e03f8da6c77e7ddb086443e5349e5db2d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 129
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 32,
+                "distance": 142
+              },
+              "slots_changed_by_feedback": 6,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 134
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 136
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 15,
+            "distance": 90
+          },
+          "stream_review_order_sha256": "b51f9f02fff9f53ace948e7f1d5bde218b8cf5b90bf9afc0b394600388cec48e",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 75
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 74
+              },
+              "slots_changed_by_feedback": 9,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 75
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 74
+              },
+              "slots_changed_by_feedback": 9,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 15,
+            "distance": 87
+          },
+          "stream_review_order_sha256": "c41b0cc71afda4ae8e480739a4d5c2dcba88cb19220a765c53aea7e3c7dac863",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 87
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 65
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 87
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 65
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 109
+          },
+          "stream_review_order_sha256": "9ceb50714cb99612a812ef533e6f4ca5cdb27f3b9cabe0a1ca9f3f91eeb9f56d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 108
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 27
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 19,
+            "distance": 80
+          },
+          "stream_review_order_sha256": "8c3401549f1f4b7df56ad4e3d9d7a6cbc25be9a06bb927b9963455c8cfe9841d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 22
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 15,
+            "distance": 87
+          },
+          "stream_review_order_sha256": "c41b0cc71afda4ae8e480739a4d5c2dcba88cb19220a765c53aea7e3c7dac863",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 87
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 65
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 87
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 11,
+                "distance": 62
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 3
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 109
+          },
+          "stream_review_order_sha256": "9ceb50714cb99612a812ef533e6f4ca5cdb27f3b9cabe0a1ca9f3f91eeb9f56d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 108
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 122
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 27
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 7,
+          "distance": 34
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 9,
+          "distance": 34
+        },
+        "stream": {
+          "n": 500,
+          "errors": 41,
+          "distance": 192
+        },
+        "future": {
+          "n": 600,
+          "errors": 35,
+          "distance": 176
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            15,
+            0.5
+          ],
+          "distance": [
+            15,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.75
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.5
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.049809523536
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.119786961437
+        }
+      },
+      "initial_distance_per_error": 4.857142857142857,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 2,
+            "distance": 9
+          },
+          "stream_review_order_sha256": "1c11c53563cedd33220b2f6ba2606cd25474aa7ec6cbd68dc1bc0ba93ef06bce",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 9
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 9
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 9
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 9
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 102
+          },
+          "stream_review_order_sha256": "2829f3ea6c78262079d79aa732c986b37a9f4207fe96f93b2872840f1fd69aef",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 107
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 107
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 126
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 126
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 27,
+            "distance": 133
+          },
+          "stream_review_order_sha256": "0d77a560daac00972fdd173fa56022a129797791161e5c2e7745080cd2bc0dbf",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 148
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 146
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 138
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 150
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 19
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 118
+          },
+          "stream_review_order_sha256": "2f8b3803fe3f03046eb9f1dea97c00a2dc5a9212961a9e0a51f47732890c4701",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 159
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 137
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 155
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 147
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 13,
+            "distance": 62
+          },
+          "stream_review_order_sha256": "d0b1f8e2abc882f5a91f87b38c44b53955bd5d84cd0af2cb0f4680c255522055",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 94
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 94
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 11,
+            "distance": 58
+          },
+          "stream_review_order_sha256": "73c6b9ab4f05d21530d31454a6a8871c9fb009841224751b3aa0cad108345ae7",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 21,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 21,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 100
+          },
+          "stream_review_order_sha256": "2007c0c85a1ac8a09b95fc5b5847993b80f4ecc9cba5cde353db37db51d44c69",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 131
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 130
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 132
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 138
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 16
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 102
+          },
+          "stream_review_order_sha256": "2829f3ea6c78262079d79aa732c986b37a9f4207fe96f93b2872840f1fd69aef",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 107
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 107
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 126
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 126
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 11,
+            "distance": 58
+          },
+          "stream_review_order_sha256": "73c6b9ab4f05d21530d31454a6a8871c9fb009841224751b3aa0cad108345ae7",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 21,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 83
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 4
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 100
+          },
+          "stream_review_order_sha256": "2007c0c85a1ac8a09b95fc5b5847993b80f4ecc9cba5cde353db37db51d44c69",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 131
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 130
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 136
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 143
+              },
+              "slots_changed_by_feedback": 19,
+              "slots_changed_from_unit": 23
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 7,
+          "distance": 41
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 5,
+          "distance": 20
+        },
+        "stream": {
+          "n": 500,
+          "errors": 38,
+          "distance": 162
+        },
+        "future": {
+          "n": 600,
+          "errors": 42,
+          "distance": 213
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            7,
+            0.75
+          ],
+          "distance": [
+            15,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.25
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.5,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.5,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.04704304529
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.912235245379
+        }
+      },
+      "initial_distance_per_error": 5.857142857142857,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 2,
+            "distance": 4
+          },
+          "stream_review_order_sha256": "f150ffc33d1061bdff167dc6ef035dd5467f7a96531bfd3ea89fb206a14a6394",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 13
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 13
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 13
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 13
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 84
+          },
+          "stream_review_order_sha256": "c712cb392b47de07914a4330d6e184d93aa2dd5f38e6774d8c3fe8b260d55a32",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 80
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 80
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 101
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 13
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 70
+          },
+          "stream_review_order_sha256": "91d9309081bd49dc2e571f73d862be940f138ebfd9a8dea65f3b98b847f78e69",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 141
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 161
+              },
+              "slots_changed_by_feedback": 21,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 142
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 142
+              },
+              "slots_changed_by_feedback": 9,
+              "slots_changed_from_unit": 24
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 31,
+            "distance": 130
+          },
+          "stream_review_order_sha256": "6615f87e0d777efaff9db05be91d0aa4e0b92f812ba678c471478f61efd76e7f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 36,
+                "distance": 177
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 133
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 179
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 142
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 16
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 6,
+            "distance": 36
+          },
+          "stream_review_order_sha256": "db3c5eb143cb7694ffb574b9924281463b3ebd772e6766e962a104cb34204af7",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 132
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 132
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 7,
+            "distance": 43
+          },
+          "stream_review_order_sha256": "3d30415221fb8b39deb3049f044c041c40d6aa87eca5b3ccc9feffedb6be85b6",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 126
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 126
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 14,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "95148d9cdd37669800fef41098ee3e900a847d672510314e834c67b3c531f1a1",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 129
+              },
+              "slots_changed_by_feedback": 22,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 133
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 134
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 84
+          },
+          "stream_review_order_sha256": "c712cb392b47de07914a4330d6e184d93aa2dd5f38e6774d8c3fe8b260d55a32",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 80
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 80
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 101
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 13
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 7,
+            "distance": 43
+          },
+          "stream_review_order_sha256": "3d30415221fb8b39deb3049f044c041c40d6aa87eca5b3ccc9feffedb6be85b6",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 126
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 128
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 3
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 14,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "95148d9cdd37669800fef41098ee3e900a847d672510314e834c67b3c531f1a1",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 129
+              },
+              "slots_changed_by_feedback": 22,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 127
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 141
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 10,
+          "distance": 53
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 11,
+          "distance": 61
+        },
+        "stream": {
+          "n": 500,
+          "errors": 33,
+          "distance": 170
+        },
+        "future": {
+          "n": 600,
+          "errors": 38,
+          "distance": 152
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.75
+          ],
+          "distance": [
+            3,
+            0.75
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.054869670239
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.632382731702
+        }
+      },
+      "initial_distance_per_error": 5.3,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 4,
+            "distance": 30
+          },
+          "stream_review_order_sha256": "da39071500db58c2276985cf14d2462565569b88a118aab6c08ace230de442ae",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 9
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 9
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 9
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 9
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 92
+          },
+          "stream_review_order_sha256": "2d1fdf56757a1bcb0586ac88015abce1b9592b5b3f5ea1ba6eca324a450bfcb5",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 100
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 102
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 102
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 125
+          },
+          "stream_review_order_sha256": "db0709cc512d4641fd12cd5a782747d9a230e1c0eaea827e27040af46fb84804",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 84
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 105
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 77
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 106
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 29,
+            "distance": 146
+          },
+          "stream_review_order_sha256": "96a0ccf0b0187bb8ed093dd67a191ce0d058406b51ddc7d0a307c375a51bdbd1",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 33,
+                "distance": 135
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 104
+              },
+              "slots_changed_by_feedback": 19,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 128
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 109
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 19
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 95
+          },
+          "stream_review_order_sha256": "5da916bc7a4359d187dad49f775bec20c9e2eed3182e5650207c266087b92bd9",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 66
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 53
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 66
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 53
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 95
+          },
+          "stream_review_order_sha256": "0886b49bc04b70c23822bd4d6d47c4c3ba5b953fa64a1cb65546ea9201baf16a",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 62
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 51
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 62
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 51
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 25,
+            "distance": 126
+          },
+          "stream_review_order_sha256": "653043e21bd39220a9efb5bfbf52a7d08d6823ddaf36069f18a4190c6a315d24",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 105
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 115
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 107
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 92
+          },
+          "stream_review_order_sha256": "2d1fdf56757a1bcb0586ac88015abce1b9592b5b3f5ea1ba6eca324a450bfcb5",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 100
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 102
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 102
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 95
+          },
+          "stream_review_order_sha256": "0886b49bc04b70c23822bd4d6d47c4c3ba5b953fa64a1cb65546ea9201baf16a",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 62
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 51
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 55
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 11,
+                "distance": 54
+              },
+              "slots_changed_by_feedback": 23,
+              "slots_changed_from_unit": 5
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 25,
+            "distance": 126
+          },
+          "stream_review_order_sha256": "653043e21bd39220a9efb5bfbf52a7d08d6823ddaf36069f18a4190c6a315d24",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 105
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 106
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 107
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 18
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 7,
+          "distance": 39
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 10,
+          "distance": 47
+        },
+        "stream": {
+          "n": 500,
+          "errors": 39,
+          "distance": 192
+        },
+        "future": {
+          "n": 600,
+          "errors": 36,
+          "distance": 158
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            7,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.055366332702
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.500927735166
+        }
+      },
+      "initial_distance_per_error": 5.571428571428571,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 2,
+            "distance": 5
+          },
+          "stream_review_order_sha256": "185ce1f828ced4cd23c7c4120edb63089cdef6425df594005e848ab1240c48c6",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 24
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 24
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 24
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 24
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 111
+          },
+          "stream_review_order_sha256": "b2454ea3c810a2d828626534aad445a2596fde4e73e68f34df96433e4377e905",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 79
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 79
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 99
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 99
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 27,
+            "distance": 148
+          },
+          "stream_review_order_sha256": "884680cf646f03d68d718d2d3e4859da7ccc5fa421e8eae187b06942d485241f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 126
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 132
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 29,
+                "distance": 131
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 13
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 26,
+            "distance": 120
+          },
+          "stream_review_order_sha256": "1783a44a46b05e5bd7b66a3e905d4cb471d814ae61db426b205509760756bedb",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 32,
+                "distance": 140
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 29,
+                "distance": 126
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 147
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 129
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 12
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 106
+          },
+          "stream_review_order_sha256": "eeefd35ddf37137c7244fc46b6e75fb14c84be00b3b9a3d312db5a0e2ca431ef",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 81
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 81
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 15,
+            "distance": 101
+          },
+          "stream_review_order_sha256": "9bf2ca25bf670b53759c532f856d555359a155c47a0c0d75d63c54bb87a332b3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 78
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 78
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 26,
+            "distance": 136
+          },
+          "stream_review_order_sha256": "dde1ffaf4a915af032be7e1e0ca59251a12f9da2e721474ecd2d7bb08d205ae5",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 107
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 124
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 129
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 126
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 12
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 111
+          },
+          "stream_review_order_sha256": "b2454ea3c810a2d828626534aad445a2596fde4e73e68f34df96433e4377e905",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 79
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 79
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 99
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 99
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 15,
+            "distance": 101
+          },
+          "stream_review_order_sha256": "9bf2ca25bf670b53759c532f856d555359a155c47a0c0d75d63c54bb87a332b3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 78
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 80
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 73
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 2
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 26,
+            "distance": 136
+          },
+          "stream_review_order_sha256": "dde1ffaf4a915af032be7e1e0ca59251a12f9da2e721474ecd2d7bb08d205ae5",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 107
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 124
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 129
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 127
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 17,
+          "distance": 82
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 4,
+          "distance": 22
+        },
+        "stream": {
+          "n": 500,
+          "errors": 27,
+          "distance": 138
+        },
+        "future": {
+          "n": 600,
+          "errors": 44,
+          "distance": 194
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.25
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.0
+          ],
+          "distance": [
+            3,
+            0.0
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.0,
+          "distance": 0.0
+        },
+        "bem_graded_blend": {
+          "unit": 0.0,
+          "distance": 0.0
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.035629397825
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.90644346211
+        }
+      },
+      "initial_distance_per_error": 4.823529411764706,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 4,
+            "distance": 15
+          },
+          "stream_review_order_sha256": "054e4da6be1d200707c96554253e8fdabce59cebc4e2bf3ff040d139238cf3b5",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 19
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 19
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 19
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 4,
+                "distance": 19
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "3a868ed7b322563c8a94c7c1fad5682a83360285a4bafc0f8e838fa41c6ac0a3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 91
+          },
+          "stream_review_order_sha256": "76ca21fc649980d22b3fb9412cef4018dbd844f06954727d0054aff7137fbedd",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 141
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 135
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 135
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 141
+              },
+              "slots_changed_by_feedback": 3,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "3a868ed7b322563c8a94c7c1fad5682a83360285a4bafc0f8e838fa41c6ac0a3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 15,
+            "distance": 81
+          },
+          "stream_review_order_sha256": "3a80fc9340d468ce6526b10a09dbc7c25df2748dbc87c39cb8bf803cc60e245a",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 81
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 93
+              },
+              "slots_changed_by_feedback": 6,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 81
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 93
+              },
+              "slots_changed_by_feedback": 6,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 12,
+            "distance": 63
+          },
+          "stream_review_order_sha256": "1fceeab7184f36372a0e12d7924493ec46dba27475aefe896741fc01244a434f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "3a868ed7b322563c8a94c7c1fad5682a83360285a4bafc0f8e838fa41c6ac0a3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "3a868ed7b322563c8a94c7c1fad5682a83360285a4bafc0f8e838fa41c6ac0a3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 12,
+            "distance": 63
+          },
+          "stream_review_order_sha256": "1fceeab7184f36372a0e12d7924493ec46dba27475aefe896741fc01244a434f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 83
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 87
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 6
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 17,
+            "distance": 67
+          },
+          "stream_review_order_sha256": "3a868ed7b322563c8a94c7c1fad5682a83360285a4bafc0f8e838fa41c6ac0a3",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 21
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 6,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 9,
+          "distance": 35
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 12,
+          "distance": 55
+        },
+        "stream": {
+          "n": 500,
+          "errors": 39,
+          "distance": 190
+        },
+        "future": {
+          "n": 600,
+          "errors": 32,
+          "distance": 156
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            3,
+            0.75
+          ],
+          "distance": [
+            3,
+            0.75
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.75
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.5,
+          "distance": 0.5
+        },
+        "bem_graded_blend": {
+          "unit": 0.5,
+          "distance": 0.75
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.5,
+            "lack_of_success": 0.25,
+            "lack_of_coverage": 0.25
+          },
+          "memory_weight": 0.5,
+          "calibration_mse": 0.077314749746
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.5,
+            "lack_of_success": 0.25,
+            "lack_of_coverage": 0.25
+          },
+          "memory_weight": 0.75,
+          "calibration_mse": 2.065629962049
+        }
+      },
+      "initial_distance_per_error": 3.888888888888889,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 4,
+            "distance": 21
+          },
+          "stream_review_order_sha256": "ce217f1a2f3131b4f6c276719c4e98822fa6c56aeafef1b33388c3fbfd267b21",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 7
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 7
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 7
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 7
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 29,
+            "distance": 132
+          },
+          "stream_review_order_sha256": "edb1adc29e6c897184babc8a76ef1eed3bd1794061fa8961017d4f43a46f512a",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 101
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 113
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 113
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 25,
+            "distance": 124
+          },
+          "stream_review_order_sha256": "d01e5286124d2481b6700f9695fdec7b90b8f9e6eb3e68412e72eab4d94bc8a0",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 118
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "slots_changed_by_feedback": 19,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 31,
+            "distance": 150
+          },
+          "stream_review_order_sha256": "3b1082269e707f99ac2b46a33ced3ceb6dd003546ea48af5f9d5d86f30fda730",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 137
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 121
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 118
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 120
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 13
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 96
+          },
+          "stream_review_order_sha256": "a39935bc741def51a0280300de1b31ca41a80534044b15d9a8173f0e2fe69522",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 85
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 23,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 85
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 84
+              },
+              "slots_changed_by_feedback": 23,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 16,
+            "distance": 78
+          },
+          "stream_review_order_sha256": "cc620976b953a317c7ff32cb71e8b3b95826caa83b6be722001abeafeee88921",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 86
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 76
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 86
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 76
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 98
+          },
+          "stream_review_order_sha256": "824f88f7db0ad34162d6f3b25015ccc2f816becf2ed2d6d5bd8039322ec201dd",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 113
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 105
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 105
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 10
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 26,
+            "distance": 120
+          },
+          "stream_review_order_sha256": "52d1fe1957644ddba0a710425240bcd05cc14f5cc40ae4a24be1e9558713e9c9",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 109
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 129
+              },
+              "slots_changed_by_feedback": 19,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 117
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 110
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 22
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 16,
+            "distance": 78
+          },
+          "stream_review_order_sha256": "cc620976b953a317c7ff32cb71e8b3b95826caa83b6be722001abeafeee88921",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 86
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 76
+              },
+              "slots_changed_by_feedback": 18,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 12,
+                "distance": 80
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 7
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 98
+          },
+          "stream_review_order_sha256": "824f88f7db0ad34162d6f3b25015ccc2f816becf2ed2d6d5bd8039322ec201dd",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 113
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 86
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 14,
+          "distance": 65
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 8,
+          "distance": 46
+        },
+        "stream": {
+          "n": 500,
+          "errors": 35,
+          "distance": 166
+        },
+        "future": {
+          "n": 600,
+          "errors": 35,
+          "distance": 159
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            7,
+            0.75
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.064377682399
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 2.028899750262
+        }
+      },
+      "initial_distance_per_error": 4.642857142857143,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 2,
+            "distance": 13
+          },
+          "stream_review_order_sha256": "80220d9d0255c96e5e97f3e80666721be1715503bcead51cd267f7406a01433c",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 15
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 15
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 15
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 2,
+                "distance": 15
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 22,
+            "distance": 96
+          },
+          "stream_review_order_sha256": "61e6ec4261fd5372507168ce6739db592d35ce89c49a48f9dc193289f0f0d13d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 77
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 77
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 113
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 113
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 16,
+            "distance": 81
+          },
+          "stream_review_order_sha256": "b95182b3dbb851df6719c3cdf5728265f34a24194d5da2f7024faf8e4d826b3a",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 122
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 116
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 132
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 9,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 27,
+            "distance": 131
+          },
+          "stream_review_order_sha256": "7fcbc2845ae92edf09ca73f7f34f16ef2ea6c87edbc49d6217fa194402871294",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 140
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 117
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 136
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 125
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 10,
+            "distance": 61
+          },
+          "stream_review_order_sha256": "8105721df83c6383b036ef1a5ffaeefdfe5b4da1ea6bcd5297fc8671f462e7c8",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 19,
+                "distance": 95
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 92
+              },
+              "slots_changed_by_feedback": 5,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 19,
+                "distance": 95
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 92
+              },
+              "slots_changed_by_feedback": 5,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 14,
+            "distance": 79
+          },
+          "stream_review_order_sha256": "40c2be67ea6c62f6e62ead2ec38669307e68730b92cd83c747bf86d52b064245",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 78
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 91
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 78
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 91
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 111
+          },
+          "stream_review_order_sha256": "af610a0e5d2d1ebe18cb41d62082a4b02b1e0cf22c4b785d85b59e07e3ac5618",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 108
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 102
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 121
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 114
+              },
+              "slots_changed_by_feedback": 9,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 22,
+            "distance": 96
+          },
+          "stream_review_order_sha256": "61e6ec4261fd5372507168ce6739db592d35ce89c49a48f9dc193289f0f0d13d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 77
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 77
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 113
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 113
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 14,
+            "distance": 79
+          },
+          "stream_review_order_sha256": "40c2be67ea6c62f6e62ead2ec38669307e68730b92cd83c747bf86d52b064245",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 78
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 91
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 84
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 83
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 7
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 111
+          },
+          "stream_review_order_sha256": "af610a0e5d2d1ebe18cb41d62082a4b02b1e0cf22c4b785d85b59e07e3ac5618",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 108
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 102
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 121
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 114
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 8,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 15,
+          "distance": 81
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 14,
+          "distance": 62
+        },
+        "stream": {
+          "n": 500,
+          "errors": 28,
+          "distance": 144
+        },
+        "future": {
+          "n": 600,
+          "errors": 35,
+          "distance": 149
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            7,
+            0.5
+          ],
+          "distance": [
+            7,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.25
+          ],
+          "distance": [
+            3,
+            0.25
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.067056522909
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.652624096235
+        }
+      },
+      "initial_distance_per_error": 5.4,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 5,
+            "distance": 21
+          },
+          "stream_review_order_sha256": "fd6b501bba79c3704bbdedb30a3412468fb34dcbface28a72eeecce6d1d89245",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 14
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 14
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 14
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 14
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 79
+          },
+          "stream_review_order_sha256": "65ccb54b4ab3279cf76cbc400593095f626f980b7e1e7f92ae3257ae0aafa85b",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 92
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 92
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 105
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 105
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 105
+          },
+          "stream_review_order_sha256": "a286888c20c8cf3a72b775c903dcf15a8f1a3db06adc7ee1aefc245cdda0a139",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 91
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 102
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 102
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 16
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 19,
+            "distance": 90
+          },
+          "stream_review_order_sha256": "4fb0717a07a3f65bcb611ca95e946fbbe1bfbf7916233ec81ebd0ca13aec49d8",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 29,
+                "distance": 114
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 105
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 131
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 129
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 9,
+            "distance": 57
+          },
+          "stream_review_order_sha256": "53e04823910273b2f234f453e4d4bb57b3e2555ba183a3f22e2062273306f703",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 7,
+                "distance": 41
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 7,
+                "distance": 41
+              },
+              "slots_changed_by_feedback": 8,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 7,
+                "distance": 41
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 7,
+                "distance": 41
+              },
+              "slots_changed_by_feedback": 8,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 8,
+            "distance": 50
+          },
+          "stream_review_order_sha256": "840dac863596623e681de726223ea8b1384cd9b41764612fc5fe7e182d005a9f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 55
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 48
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 55
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 48
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 106
+          },
+          "stream_review_order_sha256": "189815ff05501717496b5d6ec90154a5d8a9e74e949ce38e78c3e8657fd9b6ee",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 98
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 115
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 103
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 79
+          },
+          "stream_review_order_sha256": "65ccb54b4ab3279cf76cbc400593095f626f980b7e1e7f92ae3257ae0aafa85b",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 92
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 92
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 105
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 105
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 8,
+            "distance": 50
+          },
+          "stream_review_order_sha256": "840dac863596623e681de726223ea8b1384cd9b41764612fc5fe7e182d005a9f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 55
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 48
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 11,
+                "distance": 56
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 48
+              },
+              "slots_changed_by_feedback": 5,
+              "slots_changed_from_unit": 8
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 106
+          },
+          "stream_review_order_sha256": "189815ff05501717496b5d6ec90154a5d8a9e74e949ce38e78c3e8657fd9b6ee",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 100
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 98
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 118
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 108
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 20
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 9,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 2,
+          "distance": 7
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 9,
+          "distance": 42
+        },
+        "stream": {
+          "n": 500,
+          "errors": 41,
+          "distance": 209
+        },
+        "future": {
+          "n": 600,
+          "errors": 40,
+          "distance": 178
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.25
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.5,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.5,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.5,
+            "lack_of_success": 0.25,
+            "lack_of_coverage": 0.25
+          },
+          "memory_weight": 0.25,
+          "calibration_mse": 0.054530706247
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.481725243409
+        }
+      },
+      "initial_distance_per_error": 3.5,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 3,
+            "distance": 8
+          },
+          "stream_review_order_sha256": "d43a0d9e0fa9f8f13a59f8055b69c196c45efea67dcd62809d19df932131b041",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 6
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 6
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 6
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 6
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 101
+          },
+          "stream_review_order_sha256": "d446653f72ea5e1dc25f9cd3bcd33dcf91fe16c132cee28ae9ed899820de929d",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 98
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 98
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 19
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 97
+          },
+          "stream_review_order_sha256": "e44cb11a0f3cf8d6b72a34b442a0a6e60edc75feeba127562514c4dab44a8511",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 137
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 96
+              },
+              "slots_changed_by_feedback": 23,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 156
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 104
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 18
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 25,
+            "distance": 128
+          },
+          "stream_review_order_sha256": "20e7af43642be60686593e48a293155f092d5f144acb82e1411b176a2b3eb768",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 35,
+                "distance": 153
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 29,
+                "distance": 119
+              },
+              "slots_changed_by_feedback": 20,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 152
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 128
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 14
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 3,
+            "distance": 16
+          },
+          "stream_review_order_sha256": "c08cb6bc42cf726db690f581b1072f6ae66e4d30f382b2d2d8193b6ce025db55",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 16
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 5,
+                "distance": 22
+              },
+              "slots_changed_by_feedback": 19,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 3,
+                "distance": 16
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 5,
+                "distance": 22
+              },
+              "slots_changed_by_feedback": 19,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 5,
+            "distance": 21
+          },
+          "stream_review_order_sha256": "c7a1d94c88857a62a028c789254340a3ee8af34090f9eed64e7a9981429aceac",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 24
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 5,
+                "distance": 21
+              },
+              "slots_changed_by_feedback": 38,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 24
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 5,
+                "distance": 21
+              },
+              "slots_changed_by_feedback": 38,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 68
+          },
+          "stream_review_order_sha256": "9b0786a0d0d3edc3af2e48e1d98f788b74fe837f398942f829e5c3dcc1598da1",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 70
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 89
+              },
+              "slots_changed_by_feedback": 30,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 101
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 104
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 28
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 25,
+            "distance": 106
+          },
+          "stream_review_order_sha256": "a06665cbc84075f38e1a0dfad14fc039ab7906c43caacf91b3121d2353260fdc",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 96
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 99
+              },
+              "slots_changed_by_feedback": 8,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 98
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 98
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 5,
+            "distance": 21
+          },
+          "stream_review_order_sha256": "c7a1d94c88857a62a028c789254340a3ee8af34090f9eed64e7a9981429aceac",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 8,
+                "distance": 24
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 5,
+                "distance": 21
+              },
+              "slots_changed_by_feedback": 38,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 31
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 5,
+                "distance": 21
+              },
+              "slots_changed_by_feedback": 35,
+              "slots_changed_from_unit": 8
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 18,
+            "distance": 68
+          },
+          "stream_review_order_sha256": "9b0786a0d0d3edc3af2e48e1d98f788b74fe837f398942f829e5c3dcc1598da1",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 18,
+                "distance": 70
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 89
+              },
+              "slots_changed_by_feedback": 30,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 116
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 104
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 30
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 10,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 12,
+          "distance": 63
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 15,
+          "distance": 65
+        },
+        "stream": {
+          "n": 500,
+          "errors": 34,
+          "distance": 151
+        },
+        "future": {
+          "n": 600,
+          "errors": 31,
+          "distance": 157
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            7,
+            0.25
+          ],
+          "distance": [
+            7,
+            0.25
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.5
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.0,
+          "distance": 0.0
+        },
+        "bem_graded_blend": {
+          "unit": 0.0,
+          "distance": 0.0
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 0.063867370174
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.435695671276
+        }
+      },
+      "initial_distance_per_error": 5.25,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 2,
+            "distance": 14
+          },
+          "stream_review_order_sha256": "28088695c6d9331e4e2707c8f1b0079499fb346b8b59d2b35449656fc95a9efc",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 1,
+                "distance": 3
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 1,
+                "distance": 3
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 1,
+                "distance": 3
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 1,
+                "distance": 3
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 64
+          },
+          "stream_review_order_sha256": "95fa071ab083d3cc3652b1cc4dfd2f24f544fd46a3365b72d58c91dbf6cc8665",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 24,
+            "distance": 109
+          },
+          "stream_review_order_sha256": "7e280131cc828eb00e3ddb0d51d2a14039c610b2c21046dcb2395b8493688b2f",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 123
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 23,
+                "distance": 123
+              },
+              "slots_changed_by_feedback": 3,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 19,
+                "distance": 117
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 19,
+                "distance": 119
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 21
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 27,
+            "distance": 115
+          },
+          "stream_review_order_sha256": "af9e08cde81f4d6002d0bb485dd95d0f93e04b2c70298dac1e7624f9328e716b",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 26,
+                "distance": 134
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 132
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 22,
+                "distance": 129
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 122
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 16
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 10,
+            "distance": 65
+          },
+          "stream_review_order_sha256": "d08cdaab23ab7afd7487eccd8ac19d618e5f2b5ef11f5215a629c395fce93d79",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 95
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 70
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 95
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 70
+              },
+              "slots_changed_by_feedback": 10,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 11,
+            "distance": 59
+          },
+          "stream_review_order_sha256": "69257d6dc099d8fa6508116666bcf08911e551a27949f96526c002debab03092",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 84
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 70
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 84
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 70
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 64
+          },
+          "stream_review_order_sha256": "95fa071ab083d3cc3652b1cc4dfd2f24f544fd46a3365b72d58c91dbf6cc8665",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 64
+          },
+          "stream_review_order_sha256": "95fa071ab083d3cc3652b1cc4dfd2f24f544fd46a3365b72d58c91dbf6cc8665",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 11,
+            "distance": 59
+          },
+          "stream_review_order_sha256": "69257d6dc099d8fa6508116666bcf08911e551a27949f96526c002debab03092",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 84
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 70
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 86
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 10,
+                "distance": 70
+              },
+              "slots_changed_by_feedback": 13,
+              "slots_changed_from_unit": 4
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 64
+          },
+          "stream_review_order_sha256": "95fa071ab083d3cc3652b1cc4dfd2f24f544fd46a3365b72d58c91dbf6cc8665",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 21,
+                "distance": 103
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 20,
+                "distance": 115
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "available": {
+        "initial": {
+          "n": 150,
+          "errors": 11,
+          "distance": 72
+        },
+        "calibration": {
+          "n": 150,
+          "errors": 8,
+          "distance": 35
+        },
+        "stream": {
+          "n": 500,
+          "errors": 27,
+          "distance": 132
+        },
+        "future": {
+          "n": 600,
+          "errors": 46,
+          "distance": 197
+        }
+      },
+      "calibrated_k_and_vote_weight": {
+        "outcome_vote": {
+          "unit": [
+            3,
+            0.75
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        },
+        "class_vote": {
+          "unit": [
+            3,
+            0.75
+          ],
+          "distance": [
+            3,
+            0.5
+          ]
+        }
+      },
+      "calibrated_bem_weight": {
+        "bem_sign_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        },
+        "bem_graded_blend": {
+          "unit": 0.25,
+          "distance": 0.25
+        }
+      },
+      "calibrated_bem_joint_blend": {
+        "unit": {
+          "component_weights": {
+            "risk": 0.5,
+            "lack_of_success": 0.25,
+            "lack_of_coverage": 0.25
+          },
+          "memory_weight": 0.25,
+          "calibration_mse": 0.056921200353
+        },
+        "distance": {
+          "component_weights": {
+            "risk": 0.3333333333333333,
+            "lack_of_success": 0.3333333333333333,
+            "lack_of_coverage": 0.3333333333333333
+          },
+          "memory_weight": 0.0,
+          "calibration_mse": 1.314439107105
+        }
+      },
+      "initial_distance_per_error": 6.545454545454546,
+      "methods": {
+        "arrival": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 2,
+            "distance": 9
+          },
+          "stream_review_order_sha256": "ab96158f39ffb9819595923f7dbf64fcc6c25e309926b8f1c000bb02f57484af",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 9,
+                "distance": 31
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 9,
+                "distance": 31
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 9,
+                "distance": 31
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 9,
+                "distance": 31
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "frozen": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 94
+          },
+          "stream_review_order_sha256": "dda4ee08bc3ec3c7a1bca54600aa2da6ec335600dfebc5100a3f7a9a662f7ff8",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 105
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 105
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 132
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 132
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "outcome_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 14,
+            "distance": 75
+          },
+          "stream_review_order_sha256": "650632ee1a8abd060d3a5d3eb286d7def1bd5411ddf5215f9996c58704b0f6c9",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 29,
+                "distance": 125
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 117
+              },
+              "slots_changed_by_feedback": 16,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 137
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 147
+              },
+              "slots_changed_by_feedback": 12,
+              "slots_changed_from_unit": 12
+            }
+          }
+        },
+        "class_vote": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 23,
+            "distance": 116
+          },
+          "stream_review_order_sha256": "7ab719a6a167d464fe6ba47974be1c61d642f62cc3dd833e3aaeafaa6591ec67",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 40,
+                "distance": 169
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 36,
+                "distance": 152
+              },
+              "slots_changed_by_feedback": 17,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 32,
+                "distance": 161
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 151
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "failure_only": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 10,
+            "distance": 57
+          },
+          "stream_review_order_sha256": "e745e7d914b7dc953d0b405b2a8c5220a7456784da3ed8a5a3951bae03aa926e",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 93
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 8,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 17,
+                "distance": 93
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 13,
+                "distance": 81
+              },
+              "slots_changed_by_feedback": 8,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 9,
+            "distance": 50
+          },
+          "stream_review_order_sha256": "058ec3147269511a6a46e1f4736c469854673e10562ecbea12ac3864d00ac7e4",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 90
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 82
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 90
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 82
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 0
+            }
+          }
+        },
+        "bem_sign_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 21,
+            "distance": 106
+          },
+          "stream_review_order_sha256": "2c3b53302b38e65da4ef89d9744c6802150fb3cb6de8b25ece1f9a1bf05b88c9",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 117
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 32,
+                "distance": 143
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 143
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 24,
+                "distance": 141
+              },
+              "slots_changed_by_feedback": 15,
+              "slots_changed_from_unit": 15
+            }
+          }
+        },
+        "bem_joint_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 20,
+            "distance": 102
+          },
+          "stream_review_order_sha256": "a3a4688f196bd8b566cba35343392e0843f64ec08b294346f1047a16015b77f5",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 31,
+                "distance": 117
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 110
+              },
+              "slots_changed_by_feedback": 3,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 132
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 28,
+                "distance": 132
+              },
+              "slots_changed_by_feedback": 0,
+              "slots_changed_from_unit": 20
+            }
+          }
+        },
+        "bem_graded": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 9,
+            "distance": 50
+          },
+          "stream_review_order_sha256": "058ec3147269511a6a46e1f4736c469854673e10562ecbea12ac3864d00ac7e4",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 16,
+                "distance": 90
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 14,
+                "distance": 82
+              },
+              "slots_changed_by_feedback": 7,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 84
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 15,
+                "distance": 89
+              },
+              "slots_changed_by_feedback": 9,
+              "slots_changed_from_unit": 3
+            }
+          }
+        },
+        "bem_graded_blend": {
+          "stream_reviewed": {
+            "n": 50,
+            "errors": 21,
+            "distance": 106
+          },
+          "stream_review_order_sha256": "2c3b53302b38e65da4ef89d9744c6802150fb3cb6de8b25ece1f9a1bf05b88c9",
+          "future": {
+            "unit": {
+              "reviewed": {
+                "n": 60,
+                "errors": 30,
+                "distance": 117
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 32,
+                "distance": 143
+              },
+              "slots_changed_by_feedback": 14,
+              "slots_changed_from_unit": 0
+            },
+            "distance": {
+              "reviewed": {
+                "n": 60,
+                "errors": 27,
+                "distance": 142
+              },
+              "initial_only_reviewed": {
+                "n": 60,
+                "errors": 25,
+                "distance": 144
+              },
+              "slots_changed_by_feedback": 11,
+              "slots_changed_from_unit": 17
+            }
+          }
+        }
+      }
+    }
+  ]
+}

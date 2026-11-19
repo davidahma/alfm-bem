@@ -1,0 +1,144 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+  "device": "cpu",
+  "packages": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.7.2",
+    "torch": "2.9.1",
+    "sentence-transformers": "5.1.2",
+    "transformers": "4.57.3"
+  },
+  "authored_fixture": {
+    "memory": 14,
+    "projection_fit": 10,
+    "projection_validation": 4,
+    "heldout": 6,
+    "ood": 5,
+    "seed": 42,
+    "raw": {
+      "failure": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 3,
+        "tn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "coverage_auroc_heldout": 0.8,
+      "coverage_auroc_self_scored": 1.0
+    },
+    "projected": {
+      "failure": {
+        "tp": 3,
+        "fp": 3,
+        "fn": 0,
+        "tn": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666
+      },
+      "coverage_auroc_heldout": 0.5333333333333333,
+      "coverage_auroc_self_scored": 1.0
+    }
+  },
+  "newsgroups": {
+    "dataset": "20 Newsgroups by date, sklearn.datasets.fetch_20newsgroups(subset='all')",
+    "categories_id": [
+      "sci.space",
+      "sci.med",
+      "sci.electronics"
+    ],
+    "categories_ood": [
+      "rec.sport.hockey",
+      "rec.sport.baseball"
+    ],
+    "corpus_sha256": "011da6ba46667a230789d1c89771b4ab056ba218d810d87df0497b79654473e7",
+    "documents": 4954,
+    "split_seed": 42,
+    "projection_seed": 42,
+    "train_keyword": 255,
+    "train_other": 2113,
+    "balanced_index": 510,
+    "full_index": 2368,
+    "document_split": {
+      "keyword_queries": 64,
+      "other_science_queries": 529,
+      "sports_queries": 1993,
+      "raw": {
+        "retrieval_balanced": {
+          "failure_fraction_on_keyword": 0.73125,
+          "failure_fraction_on_other": 0.3852551984877126,
+          "auroc": 0.7808955576559546
+        },
+        "retrieval_full": {
+          "failure_fraction_on_keyword": 0.40625,
+          "failure_fraction_on_other": 0.09338374291115312,
+          "auroc": 0.790421195652174
+        },
+        "coverage_balanced": {
+          "max_cosine": 0.9188407061767225,
+          "euclidean_log_kde_bw_0.5": 0.8366679408174357,
+          "bem_coverage_bw_0.3": 0.8758751091959855
+        }
+      },
+      "projected": {
+        "retrieval_balanced": {
+          "failure_fraction_on_keyword": 0.95,
+          "failure_fraction_on_other": 0.7395085066162571,
+          "auroc": 0.6914431710775047
+        },
+        "retrieval_full": {
+          "failure_fraction_on_keyword": 0.7562500000000001,
+          "failure_fraction_on_other": 0.37466918714555764,
+          "auroc": 0.7903621219281664
+        },
+        "coverage_balanced": {
+          "max_cosine": 0.7218796031858196,
+          "euclidean_log_kde_bw_0.5": 0.6831571179658105,
+          "bem_coverage_bw_0.3": 0.6816319310403046
+        }
+      }
+    },
+    "unique_unseen_bodies": {
+      "keyword_queries": 64,
+      "other_science_queries": 510,
+      "sports_queries": 1931,
+      "raw": {
+        "retrieval_balanced": {
+          "failure_fraction_on_keyword": 0.73125,
+          "failure_fraction_on_other": 0.39843137254901956,
+          "auroc": 0.7741421568627451
+        },
+        "retrieval_full": {
+          "failure_fraction_on_keyword": 0.40625,
+          "failure_fraction_on_other": 0.09686274509803922,
+          "auroc": 0.7869791666666667
+        },
+        "coverage_balanced": {
+          "max_cosine": 0.9460830007818768,
+          "euclidean_log_kde_bw_0.5": 0.8567439404555193,
+          "bem_coverage_bw_0.3": 0.8971517348524082
+        }
+      },
+      "projected": {
+        "retrieval_balanced": {
+          "failure_fraction_on_keyword": 0.95,
+          "failure_fraction_on_other": 0.7635294117647058,
+          "auroc": 0.6815257352941176
+        },
+        "retrieval_full": {
+          "failure_fraction_on_keyword": 0.7562500000000001,
+          "failure_fraction_on_other": 0.387843137254902,
+          "auroc": 0.7832873774509804
+        },
+        "coverage_balanced": {
+          "max_cosine": 0.7354058143195134,
+          "euclidean_log_kde_bw_0.5": 0.6922797290847981,
+          "bem_coverage_bw_0.3": 0.6906976980331232
+        }
+      }
+    }
+  }
+}

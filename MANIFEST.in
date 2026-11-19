@@ -1,0 +1,9 @@
+include CITATION.cff CONTRIBUTING.md SECURITY.md NOTICE.md LICENSE Makefile
+recursive-include constraints *.txt
+recursive-include examples *.py
+recursive-include experiments *.py
+recursive-include paper *.tex *.bib *.pdf
+recursive-include results *.json
+recursive-include scripts *.py
+recursive-include tests *.py
+global-exclude *.pyc
