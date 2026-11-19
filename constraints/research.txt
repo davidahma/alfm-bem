@@ -1,5 +1,5 @@
 # Numerical reference versions for reproducing the published CPU experiments.
 # The library itself supports broader dependency ranges in pyproject.toml.
-numpy==2.3.5
+numpy==2.4.6
 scipy==1.16.3
 scikit-learn==1.7.2
