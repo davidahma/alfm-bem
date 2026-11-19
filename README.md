@@ -9,7 +9,7 @@
 
 ## What the controls show
 
-**At the same review budget, the simpler policies were competitive.** Across 12 paired replays of handwritten digits, each policy referred 720 of 7,200 future case presentations. There were 454 classifier errors available to catch. BEM risk selected 178, frozen confidence selected 291, and a calibrated blend of BEM risk and confidence also selected 291. The strongest comparison, a local class-label vote blended with confidence, selected 379. These totals reuse one digit corpus across seeds. [Benchmark protocol and paired comparisons](paper/benchmark.tex)
+**At the same review budget, the simpler policies were competitive.** Across 12 paired replays of handwritten digits, each policy referred 720 of 7,200 future case presentations. There were 454 classifier errors available to catch. BEM risk selected 178, frozen confidence selected 291, and a calibrated blend of BEM risk and confidence also selected 291. Combining risk, success, familiarity and confidence selected 290. The strongest comparison, a local class-label vote blended with confidence, selected 379. These totals reuse one digit corpus across seeds. [Benchmark protocol and paired comparisons](paper/benchmark.tex)
 
 | Five-seed synthetic outcome classification | Failure F1 | Success F1 |
 | --- | ---: | ---: |

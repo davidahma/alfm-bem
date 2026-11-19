@@ -106,4 +106,3 @@ def generate_clustered_ood(
         vec = shift + rng.standard_normal(dim) * 0.1
         samples.append(normalize(vec))
     return samples
-

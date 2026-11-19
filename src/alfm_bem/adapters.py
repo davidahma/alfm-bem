@@ -13,6 +13,7 @@ import torch.optim as optim
 from typing import List, Dict, Any
 from dataclasses import asdict, dataclass
 from math import isfinite
+from pickle import UnpicklingError
 
 from .bem import Experience, BidirectionalExperienceMemory
 
@@ -23,12 +24,12 @@ class AdapterConfig:
     input_dim: int = 256          # From projection layer
     hidden_dim: int = 64          # Small for efficiency
     output_dim: int = 256         # Back to embedding space
-    
+
     # Joint parameter and gradient norm limits
     max_grad_norm: float = 1.0    # Gradient clipping threshold
     max_param_norm: float = 10.0  # Maximum parameter norm
     learning_rate: float = 1e-4
-    
+
     # Regularization
     l2_weight: float = 0.01       # Coefficient of the sum of parameter tensor norms
     ema_decay: float = 0.999      # EMA for stable updates
@@ -37,10 +38,10 @@ class AdapterConfig:
 class BoundedAdapter(nn.Module):
     """
     A small MLP adapter with bounded updates, implemented in PyTorch.
-    
+
     Add the two-layer ReLU correction to the input, then normalize the result.
     """
-    
+
     def __init__(self, config: AdapterConfig, tenant_id: str = "global"):
         super().__init__()
         if config.input_dim != config.output_dim:
@@ -53,19 +54,19 @@ class BoundedAdapter(nn.Module):
             raise ValueError("ema_decay must lie in [0, 1]")
         self.config = config
         self.tenant_id = tenant_id
-        
+
         # Architecture
         self.norm = nn.LayerNorm(config.input_dim)
         self.fc1 = nn.Linear(config.input_dim, config.hidden_dim)
         self.relu = nn.ReLU()
         self.fc2 = nn.Linear(config.hidden_dim, config.output_dim)
-        
+
         # Initialize weights for near-identity start
         nn.init.normal_(self.fc1.weight, std=0.01)
         nn.init.zeros_(self.fc1.bias)
         nn.init.normal_(self.fc2.weight, std=0.01)
         nn.init.zeros_(self.fc2.bias)
-        
+
         # Step zero must be feasible before recording either the baseline or the EMA.
         self._project(self.parameters(), config.max_param_norm)
         self.optimizer = optim.SGD(self.parameters(), lr=config.learning_rate)
@@ -111,8 +112,10 @@ class BoundedAdapter(nn.Module):
     @torch.no_grad()
     def _on_state_loaded(self, module, incompatible_keys):
         self._project(self.parameters(), self.config.max_param_norm)
-        for name, value in self.shadow.items():
-            value.copy_(self.get_parameter(name))
+        for name, param in self.named_parameters():
+            setattr(self, self._shadow_name(name), param.detach().clone())
+        # assign=True can replace parameter objects. Rebind plain SGD to the loaded tensors.
+        self.optimizer = optim.SGD(self.parameters(), lr=self.config.learning_rate)
         self._reset_tracking()
 
     @torch.no_grad()
@@ -140,11 +143,11 @@ class BoundedAdapter(nn.Module):
         out = self.relu(out)
         out = self.fc2(out)
         out = out + residual
-        
+
         # Normalize output (embedding space)
         out = out / (out.norm(dim=-1, keepdim=True) + 1e-10)
         return out
-    
+
     def train_step(
         self,
         experiences: List[Experience],
@@ -155,17 +158,17 @@ class BoundedAdapter(nn.Module):
         """
         if not experiences:
             return 0.0
-        
+
         self.train()
         self.optimizer.zero_grad()
-        
+
         # Prepare batch
         embeddings = np.stack([e.embedding for e in experiences])
         outcomes = np.array([e.outcome for e in experiences])
-        
+
         z = self.fc1.weight.new_tensor(embeddings)
         y = self.fc1.weight.new_tensor(outcomes)
-        
+
         adapted = self.forward(z)
         target = z / (z.norm(dim=-1, keepdim=True) + 1e-10)
         similarity = torch.sum(adapted * target, dim=-1)
@@ -189,8 +192,8 @@ class BoundedAdapter(nn.Module):
                 shadow.lerp_(self.get_parameter(name), 1.0 - self.beta)
 
         self.update_count += 1
-        
-        return base_loss.item() 
+
+        return base_loss.item()
 
     def get_statistics(self) -> Dict[str, Any]:
         """Return adapter statistics."""
@@ -202,7 +205,7 @@ class BoundedAdapter(nn.Module):
             "initial_param_norm": self._initial_param_norm,
             "relative_drift": self.total_drift / (self._initial_param_norm + 1e-10)
         }
-    
+
     def save(self, path: str):
         """Save live parameters, moving average, configuration and drift history."""
         torch.save({
@@ -212,18 +215,22 @@ class BoundedAdapter(nn.Module):
             'config': asdict(self.config),
             'format_version': 2
         }, path)
-    
+
     @classmethod
     def load(cls, path: str, config: AdapterConfig) -> 'BoundedAdapter':
         """Restore weights in the configured ball. Legacy imports start a new drift interval."""
-        # Legacy checkpoints contain the config dataclass and NumPy scalar stats.
-        scalar_reducer = np.float64(0).__reduce__()[0]
-        legacy_types = [
-            AdapterConfig, np.dtype, type(np.dtype("float64")), scalar_reducer,
-            (scalar_reducer, "numpy.core.multiarray.scalar"),
-        ]
-        with torch.serialization.safe_globals(legacy_types):
+        try:
             ckpt = torch.load(path, weights_only=True, map_location="cpu")
+        except UnpicklingError:
+            # Legacy checkpoints contain the config dataclass and NumPy scalar stats.
+            if hasattr(path, "seek"):
+                path.seek(0)
+            scalar_reducer = np.float64(0).__reduce__()[0]
+            legacy_types = [AdapterConfig, np.dtype, type(np.dtype("float64")), scalar_reducer]
+            if scalar_reducer.__module__ != "numpy.core.multiarray":
+                legacy_types.append((scalar_reducer, "numpy.core.multiarray.scalar"))
+            with torch.serialization.safe_globals(legacy_types):
+                ckpt = torch.load(path, weights_only=True, map_location="cpu")
         stats = ckpt["stats"]
         adapter = cls(config, tenant_id=stats["tenant_id"])
         adapter.load_state_dict(ckpt["state_dict"])
@@ -245,13 +252,13 @@ class AdapterManager:
     """
     Manages adapters across tiers: global, domain, tenant.
     """
-    
+
     def __init__(self, config: AdapterConfig):
         self.config = config
         self.global_adapter = BoundedAdapter(config, tenant_id="global")
         self.domain_adapters: Dict[str, BoundedAdapter] = {}
         self.tenant_adapters: Dict[str, BoundedAdapter] = {}
-    
+
     def get_adapter_chain(
         self,
         tenant_id: str,
@@ -259,15 +266,15 @@ class AdapterManager:
     ) -> List[BoundedAdapter]:
         """Get chain of adapters for a tenant."""
         chain = [self.global_adapter]
-        
+
         if domain_id in self.domain_adapters:
             chain.append(self.domain_adapters[domain_id])
-        
+
         if tenant_id in self.tenant_adapters:
             chain.append(self.tenant_adapters[tenant_id])
-        
+
         return chain
-    
+
     def forward(
         self,
         z: np.ndarray,
@@ -277,12 +284,12 @@ class AdapterManager:
     ) -> np.ndarray:
         """Apply all adapters in chain."""
         chain = self.get_adapter_chain(tenant_id, domain_id)
-        
+
         for adapter in chain:
             z = adapter(z, use_ema=use_ema)
-        
+
         return z
-    
+
     def train_tenant_adapter(
         self,
         tenant_id: str,
@@ -295,8 +302,8 @@ class AdapterManager:
             self.tenant_adapters[tenant_id] = BoundedAdapter(
                 self.config, tenant_id=tenant_id
             )
-        
+
         experiences = bem.sample_for_training(batch_size)
         loss = self.tenant_adapters[tenant_id].train_step(experiences)
-        
+
         return loss

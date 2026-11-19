@@ -22,39 +22,39 @@ from .adapters import BoundedAdapter, AdapterConfig, AdapterManager
 @dataclass
 class ALFMConfig:
     """Configuration for the complete ALFM-BEM system."""
-    
+
     # Dimensions
     backbone_dim: int = 768       # Input from backbone model
     projection_dim: int = 256     # BEM embedding dimension
     adapter_hidden_dim: int = 64  # Adapter hidden layer
-    
+
     # BEM parameters
     similarity_threshold: float = 0.5
     risk_sensitivity: float = 0.8
-    
-    # Adapter parameters  
+
+    # Adapter parameters
     max_grad_norm: float = 1.0
     max_param_norm: float = 10.0
     adapter_lr: float = 1e-4
-    
+
     # Experience loop
     replay_batch_size: int = 32
     replay_frequency: int = 100   # Accepted outcomes per tenant between replay attempts
 
 
-@dataclass 
+@dataclass
 class InferenceResult:
     """Result of an ALFM-BEM inference."""
     decision: ConsensusDecision
     adapted_embedding: np.ndarray
     bem_query_result: Dict[str, Any]
-    
+
     def should_trust(self) -> bool:
         return self.decision.action == Action.TRUST
-    
+
     def should_query(self) -> bool:
         return self.decision.action == Action.QUERY
-    
+
     def get_query(self) -> Optional[str]:
         return self.decision.query_content if self.should_query() else None
 
@@ -71,21 +71,21 @@ class ALFMBEM:
         if config.replay_frequency <= 0 or config.replay_batch_size <= 0:
             raise ValueError("Replay frequency and batch size must be positive")
         self.config = config
-        
+
         # Initialize components
         self.projection = ContrastiveProjection(
             input_dim=config.backbone_dim,
             hidden_dim=512,
             output_dim=config.projection_dim
         )
-        
+
         self.bem_manager = BEMManager(
             dim=config.projection_dim, similarity_threshold=config.similarity_threshold,
             risk_sensitivity=config.risk_sensitivity,
         )
-        
+
         self.consensus = ConsensusEngine()
-        
+
         adapter_config = AdapterConfig(
             input_dim=config.projection_dim,
             hidden_dim=config.adapter_hidden_dim,
@@ -95,13 +95,13 @@ class ALFMBEM:
             learning_rate=config.adapter_lr
         )
         self.adapter_manager = AdapterManager(adapter_config)
-        
+
         # Experience loop tracking
         self._inference_count = 0
         self._outcome_counts: Dict[str, int] = {}
         self._active_queries: Dict[str, Dict[str, Any]] = {}
 
-    
+
     def infer(
         self,
         backbone_embedding: np.ndarray,
@@ -111,25 +111,25 @@ class ALFMBEM:
     ) -> InferenceResult:
         """
         Run inference through the complete ALFM-BEM pipeline.
-        
+
         Args:
             backbone_embedding: Hidden state from frozen backbone
             context: Context dict for heuristic rules
             tenant_id: Tenant identifier for isolation
             domain_id: Domain identifier
-        
+
         Returns:
             InferenceResult with decision and all signals
         """
         # 1. Project the backbone vector into memory space
         z = self.projection(backbone_embedding)
-        
+
         # 2. Apply adapters (tenant-specific corrections)
         z_adapted = self.adapter_manager.forward(z, tenant_id, domain_id)
-        
+
         # 3. Query BEM for risk/success/coverage signals
         bem_result = self.bem_manager.query(z_adapted, tenant_id, domain_id)
-        
+
         # 4. Make decision via Consensus Engine
         decision = self.consensus.decide(
             risk=bem_result["risk"],
@@ -137,7 +137,7 @@ class ALFMBEM:
             coverage=bem_result["coverage"],
             context=context
         )
-        
+
         # If Query, register active query
         if decision.action == Action.QUERY:
             query_id = str(uuid.uuid4())
@@ -148,15 +148,15 @@ class ALFMBEM:
                 "tenant_id": tenant_id,
                 "domain_id": domain_id,
             }
-        
+
         self._inference_count += 1
-        
+
         return InferenceResult(
             decision=decision,
             adapted_embedding=z_adapted,
             bem_query_result=bem_result
         )
-    
+
     def record_outcome(
         self,
         backbone_embedding: np.ndarray,
@@ -169,11 +169,11 @@ class ALFMBEM:
     ):
         """
         Record the outcome of an inference, closing the experience loop.
-        
+
         This:
         1. Adds the experience to BEM
         2. Optionally triggers adapter training via experience replay
-        
+
         Args:
             backbone_embedding: Original backbone embedding
             context: Context object (used for deduplication/hashing)
@@ -186,7 +186,7 @@ class ALFMBEM:
         # Project embedding
         z = self.projection(backbone_embedding)
         z_adapted = self.adapter_manager.forward(z, tenant_id, domain_id)
-        
+
         self._record_embedding(z_adapted, context, outcome, tenant_id, domain_id,
                                reasoning_trace, correction)
 
@@ -209,13 +209,13 @@ class ALFMBEM:
             reasoning_trace=reasoning_trace,
             correction=correction
         )
-        
+
         # Experience replay: periodically train adapters
         count = self._outcome_counts.get(tenant_id, 0) + 1
         self._outcome_counts[tenant_id] = count
         if count % self.config.replay_frequency == 0:
             self._run_experience_replay(tenant_id, domain_id)
-            
+
         # Vacuum periodically to prevent unbounded growth
         if count % 1000 == 0:
             self.bem_manager.vacuum_all(max_size=10000, ttl_days=90)
@@ -224,11 +224,11 @@ class ALFMBEM:
         """Train adapter using accumulated experiences."""
         if tenant_id not in self.bem_manager.tenant_bems:
             return
-        
+
         bem = self.bem_manager.tenant_bems[tenant_id]
         if len(bem.experiences) < self.config.replay_batch_size:
             return
-        
+
         # Train tenant adapter
         loss = self.adapter_manager.train_tenant_adapter(
             tenant_id=tenant_id,
@@ -236,9 +236,9 @@ class ALFMBEM:
             projection_fn=self.projection,
             batch_size=self.config.replay_batch_size
         )
-        
+
         return loss
-    
+
     def add_heuristic_rule(
         self,
         name: str,
@@ -248,7 +248,7 @@ class ALFMBEM:
     ):
         """Add a heuristic rule to the Consensus Engine."""
         self.consensus.add_heuristic_rule(name, check_fn, is_critical, description)
-    
+
     def get_statistics(self, tenant_id: str = "global") -> Dict[str, Any]:
         """Get system statistics."""
         stats = {
@@ -258,21 +258,21 @@ class ALFMBEM:
                 "output_dim": self.config.projection_dim
             }
         }
-        
+
         # BEM stats
         if tenant_id in self.bem_manager.tenant_bems:
             stats["bem"] = self.bem_manager.tenant_bems[tenant_id].get_statistics()
         else:
             stats["bem"] = {"total": 0}
-        
+
         # Adapter stats
         if tenant_id in self.adapter_manager.tenant_adapters:
             stats["adapter"] = self.adapter_manager.tenant_adapters[tenant_id].get_statistics()
         else:
             stats["adapter"] = {"update_count": 0}
-        
+
         return stats
-    
+
     def handle_query_response(
         self,
         query_id: str,
@@ -281,24 +281,24 @@ class ALFMBEM:
     ) -> bool:
         """
         Process human response to Query action.
-        
+
         Args:
             query_id: ID returned from infer()
             response: Text response/clarification/confirmation
             outcome: Success (1.0) or Failure (-1.0) signal derived from response
-            
+
         Returns:
             True if successfully processed
         """
         if query_id not in self._active_queries:
             return False
-            
+
         # Retrieve context
         query_ctx = self._active_queries[query_id]
-        
+
         # Enrich reasoning with the response
         reasoning = f"Query Response: {response}"
-        
+
         # Record outcome
         self._record_embedding(
             z_adapted=query_ctx["embedding"],

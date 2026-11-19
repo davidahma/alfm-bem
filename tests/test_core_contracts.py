@@ -53,7 +53,7 @@ class AdapterTests(unittest.TestCase):
         m = BoundedAdapter(self.config)
         state = {name: torch.zeros_like(p) for name, p in m.named_parameters()}
         state["fc2.bias"][1] = 12  # Imported state outside the ball.
-        m.load_state_dict(state)
+        m.load_state_dict(state, assign=True)
         before = parameters(m)
         self.assertLessEqual(before.double().norm().item(), self.config.max_param_norm)
         self.assertAlmostEqual(before.norm().item(), self.config.max_param_norm, places=6)

@@ -61,7 +61,7 @@ class SemanticAgent:
         self.risk_threshold = risk_threshold
         self.success_threshold = success_threshold
         self.coverage_threshold = coverage_threshold
-    
+
     def evaluate(
         self,
         risk: float,
@@ -70,7 +70,7 @@ class SemanticAgent:
     ) -> Tuple[str, float, str]:
         """
         Evaluate BEM signals and return recommendation.
-        
+
         Returns:
             (recommendation, confidence, explanation)
         """
@@ -81,7 +81,7 @@ class SemanticAgent:
                 1.0 - coverage,
                 f"Low memory coverage ({coverage:.2f})"
             )
-        
+
         # High risk -> suggest abstain/escalate
         if risk > self.risk_threshold:
             severity = "critical" if risk > 0.85 else "high"
@@ -90,7 +90,7 @@ class SemanticAgent:
                 risk,
                 f"Similar to past failures ({severity} risk: {risk:.2f})"
             )
-        
+
         # High success evidence -> suggest trust
         if success > self.success_threshold:
             return (
@@ -98,7 +98,7 @@ class SemanticAgent:
                 success,
                 f"Similar to past successes (confidence: {success:.2f})"
             )
-        
+
         # Moderate signals -> uncertain
         return (
             "uncertain",
@@ -110,13 +110,13 @@ class SemanticAgent:
 class HeuristicAgent:
     """
     Executes deterministic rules that must be satisfied.
-    
+
     This agent says: "These hard constraints are violated/satisfied."
     """
-    
+
     def __init__(self):
         self.rules: List[Dict[str, Any]] = []
-    
+
     def add_rule(
         self,
         name: str,
@@ -131,17 +131,17 @@ class HeuristicAgent:
             "is_critical": is_critical,
             "description": description
         })
-    
+
     def evaluate(self, context: Dict[str, Any]) -> HeuristicResult:
         """
         Check all rules against the context.
-        
+
         Returns HeuristicResult with violations and criticality.
         """
         violations = []
         is_critical = False
         details = {}
-        
+
         for rule in self.rules:
             try:
                 violated = rule["check"](context)
@@ -155,7 +155,7 @@ class HeuristicAgent:
                 if rule["is_critical"]:
                     violations.append(rule["name"])
                     is_critical = True
-        
+
         return HeuristicResult(
             violations=violations,
             is_critical=is_critical,
@@ -181,11 +181,11 @@ class ConsensusEngine:
         self.semantic_weight = semantic_weight
         self.heuristic_weight = heuristic_weight
         self.confidence_boost_threshold = confidence_boost_threshold
-    
+
     def add_heuristic_rule(self, *args, **kwargs):
         """Delegate to heuristic agent."""
         self.heuristic_agent.add_rule(*args, **kwargs)
-    
+
     def decide(
         self,
         risk: float,
@@ -195,13 +195,13 @@ class ConsensusEngine:
     ) -> ConsensusDecision:
         """
         Make a decision based on all signals.
-        
+
         Args:
             risk: BEM risk signal
             success: BEM success signal
             coverage: BEM coverage signal
             context: Context dict for heuristic rules
-        
+
         Returns:
             ConsensusDecision with action and explanation
         """
@@ -263,7 +263,7 @@ class ConsensusEngine:
         if heuristic_result.violations:
             return QueryType.CLARIFICATION  # Rule issues
         return QueryType.VALIDATION  # General uncertainty
-    
+
     def _generate_query(
         self,
         query_type: QueryType,
@@ -271,16 +271,16 @@ class ConsensusEngine:
     ) -> str:
         """Generate a specific query based on type."""
         context_preview = str(context)[:100] if context else "N/A"
-        
+
         templates = {
-            QueryType.CLARIFICATION: 
+            QueryType.CLARIFICATION:
                 f"Input is ambiguous. Please clarify: {context_preview}...",
-            QueryType.PRECEDENT: 
+            QueryType.PRECEDENT:
                 f"No successful precedent found. How should this be handled? Context: {context_preview}...",
-            QueryType.DOMAIN_KNOWLEDGE: 
+            QueryType.DOMAIN_KNOWLEDGE:
                 f"Little support in memory. What domain guidance applies here? Context: {context_preview}...",
-            QueryType.VALIDATION: 
+            QueryType.VALIDATION:
                 f"Low confidence. Please verify this approach: {context_preview}..."
         }
-        
+
         return templates.get(query_type, "Please provide additional guidance.")

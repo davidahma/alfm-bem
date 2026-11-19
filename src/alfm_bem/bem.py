@@ -24,7 +24,7 @@ class CoverageMode(Enum):
 @dataclass
 class Experience:
     """A single deployment experience stored in BEM."""
-    
+
     embedding: np.ndarray          # Projected context embedding z ∈ R^d
     outcome: float                 # Continuous outcome score in [-1, 1]
     context_hash: str              # Caller key, or SHA-256 of context from the manager
@@ -32,20 +32,20 @@ class Experience:
     tenant_id: str = "default"     # Tenant isolation
     domain_id: str = "default"     # Domain classification
     metadata: Dict[str, Any] = field(default_factory=dict)
-    
+
     # Optional fields for richer experiences
     reasoning_trace: Optional[str] = None   # What reasoning led to this outcome
     correction: Optional[str] = None        # Human correction if failure
     confirmation_count: int = 1             # How many times confirmed
-    
+
     @property
     def is_failure(self) -> bool:
         return self.outcome < DEFAULT_FAILURE_THRESHOLD
-    
+
     @property
     def is_success(self) -> bool:
         return self.outcome > DEFAULT_SUCCESS_THRESHOLD
-    
+
     @property
     def severity(self) -> int:
         """Map outcome to severity 1-5 for compatibility with original NEP."""
@@ -116,9 +116,9 @@ class BidirectionalExperienceMemory:
         self._quarantine: List[Experience] = []
 
     def add_experience(
-        self, 
-        embedding: np.ndarray, 
-        outcome: float, 
+        self,
+        embedding: np.ndarray,
+        outcome: float,
         context_hash: str,
         tenant_id: str = "default",
         domain_id: str = "default",
@@ -167,7 +167,7 @@ class BidirectionalExperienceMemory:
             correction=correction,
         )
         self.experiences.append(exp)
-        
+
         self._invalidate_index()
 
     def _normalize(self, embedding):
@@ -222,41 +222,41 @@ class BidirectionalExperienceMemory:
         self._ensure_index()
         if self._embedding_matrix is None:
             return np.array([])
-            
+
         return self._embedding_matrix @ self._normalize(z)
 
     def risk_signal(self, z: np.ndarray) -> Tuple[float, List[Experience]]:
         """
         Compute a risk score for this context,
         based on similarity to past failures.
-        
+
         This is the generalization of NEP's s_NEP.
-        
+
         Returns:
             (risk_score in [0,1], list of relevant failure experiences)
         """
         sims = self._compute_similarities(z)
         if len(sims) == 0:
             return 0.0, []
-        
+
         # Filter to failures and above threshold
         relevant_candidates = []
-        
+
         for i, (sim, exp) in enumerate(zip(sims, self.experiences)):
             if sim > self.similarity_threshold and exp.is_failure:
                 relevant_candidates.append((sim, exp))
-        
+
         if not relevant_candidates:
             return 0.0, []
-            
+
         # Sort by similarity (descending) and take top-k to prevent unbounded risk accumulation
         # from many weak signals in dense regions
         relevant_candidates.sort(key=lambda x: x[0], reverse=True)
         relevant_candidates = relevant_candidates[:20]  # Limit to 20 nearest failures
-        
+
         relevant = [exp for sim, exp in relevant_candidates]
         risk_components = []
-        
+
         for sim, exp in relevant_candidates:
             # Weight by similarity, severity, and recency
             age_days = (datetime.now() - exp.timestamp).days
@@ -265,35 +265,35 @@ class BidirectionalExperienceMemory:
             risk_components.append(
                 self.risk_sensitivity * weight
             )
-        
+
         if not risk_components:
             return 0.0, []
-        
+
         # Combine the clipped components as a noisy-OR score.
         risk = 1.0 - np.prod([1.0 - np.clip(r, 0.0, 0.99) for r in risk_components])
-        
+
         # Correlation boost: if multiple similar failures, increase risk
         if len(relevant) > 1:
             failure_embeddings = np.vstack([e.embedding for e in relevant])
             pairwise_sims = failure_embeddings @ failure_embeddings.T
             max_correlation = np.max(pairwise_sims[np.triu_indices(len(relevant), k=1)])
             risk = min(1.0, risk + 0.1 * max_correlation)
-        
+
         return float(np.clip(risk, 0.0, 1.0)), relevant
-    
+
     def success_signal(self, z: np.ndarray) -> Tuple[float, List[Experience]]:
         """
         Compute success signal: evidence that similar contexts succeeded.
-        
+
         This enables retrieval of successful reasoning patterns.
         """
         sims = self._compute_similarities(z)
         if len(sims) == 0:
             return 0.0, []
-        
+
         relevant = []
         success_components = []
-        
+
         for sim, exp in zip(sims, self.experiences):
             if sim > self.similarity_threshold and exp.is_success:
                 relevant.append(exp)
@@ -301,21 +301,21 @@ class BidirectionalExperienceMemory:
                 decay = np.exp(-self.decay_rate * age_days)
                 weight = sim * ((6 - exp.severity) / 5.0) * decay
                 success_components.append(weight)
-        
+
         if not success_components:
             return 0.0, []
-        
+
         # Average success evidence (not noisy-OR — successes are reinforcing)
         success = float(np.mean(success_components))
         return float(np.clip(success, 0.0, 1.0)), relevant
-    
+
     def coverage_signal(self, z: np.ndarray) -> float:
         """
         Compute coverage signal: how well is this context represented
         in our experience distribution?
-        
+
         Low coverage indicates weak support in the stored embeddings.
-        
+
         Supports multiple modes:
         - LEGACY: max_sim + Mahalanobis
         - KNN_AVG: k-NN average similarity
@@ -324,58 +324,58 @@ class BidirectionalExperienceMemory:
         self._ensure_index()
         if self._embedding_matrix is None or len(self.experiences) < 10:
             return 0.0  # Not enough data for coverage estimation
-        
+
         sims = self._compute_similarities(z)
         if len(sims) == 0:
             return 0.0
-        
+
         if self.coverage_mode == CoverageMode.KDE:
             return self._coverage_kde(sims)
         elif self.coverage_mode == CoverageMode.KNN_AVG:
             return self._coverage_knn_avg(sims)
         else:  # LEGACY
             return self._coverage_legacy(z, sims)
-    
+
     def _coverage_kde(self, sims: np.ndarray) -> float:
         """
         Kernel Density Estimation coverage.
-        
+
         Computes density using Gaussian kernel over cosine distances.
         High density = well covered by experiences = in-distribution.
         """
         # Convert similarities to distances
         distances = 1.0 - sims
-        
+
         # Gaussian kernel: K(d) = exp(-d^2 / (2 * bw^2))
         kernel_vals = np.exp(-distances**2 / (2 * self.kde_bandwidth**2))
-        
+
         # Normalize by number of experiences for consistent scale.
         density = np.mean(kernel_vals)
 
         # Calibrated rescaling to [0, 1] based on typical ID density.
         coverage = np.clip(density * self._kde_coverage_scale, 0.0, 1.0)
         return float(coverage)
-    
+
     def _coverage_knn_avg(self, sims: np.ndarray) -> float:
         """
         k-NN average similarity coverage.
-        
+
         Average of top-k similarities. More robust than max similarity.
         """
         k = min(self.knn_k, len(sims))
         top_k_sims = np.sort(sims)[-k:]
         coverage = float(np.mean(top_k_sims))
         return np.clip(coverage, 0.0, 1.0)
-    
+
     def _coverage_legacy(self, z: np.ndarray, sims: np.ndarray) -> float:
         """
         Original coverage method: max_sim + Mahalanobis.
-        
+
         Kept for backward compatibility and ablation studies.
         """
         z_norm = z / (np.linalg.norm(z) + 1e-10)
         max_sim = np.max(sims) if len(sims) > 0 else 0.0
-        
+
         try:
             diff = z_norm - self._mean_embedding
             covariance = self._cov_embedding + 1e-6 * np.eye(self.dim)
@@ -383,10 +383,10 @@ class BidirectionalExperienceMemory:
             mahal_coverage = np.exp(-mahal_dist / 10.0)
         except np.linalg.LinAlgError:
             mahal_coverage = 0.5
-        
+
         coverage = 0.6 * max_sim + 0.4 * mahal_coverage
         return float(np.clip(coverage, 0.0, 1.0))
-    
+
     def retrieve(
         self,
         z: np.ndarray,
@@ -395,7 +395,7 @@ class BidirectionalExperienceMemory:
     ) -> List[Tuple[Experience, float]]:
         """
         Retrieve k most relevant experiences with their similarities.
-        
+
         Args:
             z: Query embedding
             k: Number to retrieve
@@ -417,7 +417,7 @@ class BidirectionalExperienceMemory:
         sims = self._compute_similarities(z)
         if len(sims) == 0:
             return []
-        
+
         # Filter by outcome if requested
         candidates = []
         for i, (sim, exp) in enumerate(zip(sims, self.experiences)):
@@ -426,11 +426,11 @@ class BidirectionalExperienceMemory:
             if outcome_filter == "success" and not exp.is_success:
                 continue
             candidates.append((exp, float(sim)))
-        
+
         # Sort by similarity
         candidates.sort(key=lambda x: x[1], reverse=True)
         return candidates[:k]
-    
+
     def sample_for_training(
         self,
         batch_size: int = 32,
@@ -438,16 +438,16 @@ class BidirectionalExperienceMemory:
     ) -> List[Experience]:
         """
         Sample a balanced batch for adapter training.
-        
+
         Target the requested failure fraction and fill available slots from either sign.
         """
         failures = [e for e in self.experiences if e.is_failure]
         successes = [e for e in self.experiences if e.is_success]
-        
+
         n_failures = min(int(batch_size * failure_ratio), len(failures))
         n_successes = min(batch_size - n_failures, len(successes))
         n_failures = min(batch_size - n_successes, len(failures))
-        
+
         # Weight by confirmation count (more confirmed = more important)
         if failures:
             failure_weights = np.array([e.confirmation_count for e in failures])
@@ -457,7 +457,7 @@ class BidirectionalExperienceMemory:
             )) if n_failures <= len(failures) else failures
         else:
             sampled_failures = []
-        
+
         if successes:
             success_weights = np.array([e.confirmation_count for e in successes])
             success_weights = success_weights / success_weights.sum()
@@ -466,9 +466,9 @@ class BidirectionalExperienceMemory:
             )) if n_successes <= len(successes) else successes
         else:
             sampled_successes = []
-        
+
         return sampled_failures + sampled_successes
-    
+
     def vacuum(
         self,
         max_size: int = 10000,
@@ -629,20 +629,20 @@ class BidirectionalExperienceMemory:
     def check_conflict(self, z: np.ndarray, outcome: float) -> Optional[str]:
         """
         Check if the proposed outcome contradicts high-confidence memory.
-        
+
         Report conflicting strong signs above similarity 0.85 with at least three confirmations.
-        
+
         Returns:
             Warning string if conflict found, None otherwise.
         """
         sims = self._compute_similarities(z)
         if len(sims) == 0:
             return None
-            
+
         # Look for very similar experiences (strict threshold 0.85)
         CONFLICT_SIM_THRESHOLD = 0.85
         CONFIDENCE_MIN = 3  # Must be confirmed 3+ times to block
-        
+
         for sim, exp in zip(sims, self.experiences):
             if sim > CONFLICT_SIM_THRESHOLD:
                 # Check for sign mismatch (Opposite labels)
@@ -655,12 +655,12 @@ class BidirectionalExperienceMemory:
                             f"with similarity {sim:.2f}."
                         )
         return None
-    
+
     def get_statistics(self) -> Dict[str, Any]:
         """Return summary statistics about the memory."""
         if not self.experiences:
             return {"total": 0}
-        
+
         outcomes = np.array([e.outcome for e in self.experiences])
         return {
             "total": len(self.experiences),
@@ -672,7 +672,7 @@ class BidirectionalExperienceMemory:
             "unique_domains": len(set(e.domain_id for e in self.experiences)),
             "total_confirmations": sum(e.confirmation_count for e in self.experiences)
         }
-    
+
     def save(self, path: str):
         """Serialize memory to disk."""
         with open(path, 'w') as f:
@@ -708,7 +708,7 @@ class BidirectionalExperienceMemory:
                 for e in self.experiences
             ]
         }
-    
+
     @classmethod
     def load(cls, path: str) -> 'BidirectionalExperienceMemory':
         """Load memory from disk."""
@@ -732,7 +732,7 @@ class BidirectionalExperienceMemory:
                 confirmation_count=e_data["confirmation_count"]
             )
             bem.experiences.append(exp)
-        
+
         return bem
 
 
@@ -740,13 +740,13 @@ class BidirectionalExperienceMemory:
 class BEMManager:
     """
     Manages multiple BEM instances with tenant isolation.
-    
+
     Structure:
     - Global BEM: Shared records read on every managed query
     - Domain BEMs: Domain-specific experiences
     - Tenant BEMs: Per-tenant isolated experiences
     """
-    
+
     def __init__(self, dim: int = 768, similarity_threshold: float = 0.5,
                  risk_sensitivity: float = 0.8):
         self.dim = dim
@@ -755,7 +755,7 @@ class BEMManager:
         self.global_bem = BidirectionalExperienceMemory(**self._memory_config, tenant_id="global")
         self.domain_bems: Dict[str, BidirectionalExperienceMemory] = {}
         self.tenant_bems: Dict[str, BidirectionalExperienceMemory] = {}
-    
+
     def get_scoped_memory(
         self,
         tenant_id: str,
@@ -763,19 +763,19 @@ class BEMManager:
     ) -> List[BidirectionalExperienceMemory]:
         """
         Get all memories in scope for a tenant query.
-        
+
         Returns [global, domain, tenant] memories for unified querying.
         """
         memories = [self.global_bem]
-        
+
         if domain_id in self.domain_bems:
             memories.append(self.domain_bems[domain_id])
-        
+
         if tenant_id in self.tenant_bems:
             memories.append(self.tenant_bems[tenant_id])
-        
+
         return memories
-    
+
     def query(
         self,
         z: np.ndarray,
@@ -784,11 +784,11 @@ class BEMManager:
     ) -> Dict[str, Any]:
         """
         Unified query across all scoped memories.
-        
+
         Returns aggregated signals from global + domain + tenant memories.
         """
         memories = self.get_scoped_memory(tenant_id, domain_id)
-        
+
         # Aggregate risk signals (max across memories — conservative)
         risk_scores = []
         all_failure_experiences = []
@@ -796,7 +796,7 @@ class BEMManager:
             risk, failures = mem.risk_signal(z)
             risk_scores.append(risk)
             all_failure_experiences.extend(failures)
-        
+
         # Aggregate success signals (max across memories — optimistic)
         success_scores = []
         all_success_experiences = []
@@ -804,10 +804,10 @@ class BEMManager:
             success, successes = mem.success_signal(z)
             success_scores.append(success)
             all_success_experiences.extend(successes)
-        
+
         # Aggregate coverage (average — overall coverage estimate)
         coverage_scores = [mem.coverage_signal(z) for mem in memories]
-        
+
         return {
             "risk": max(risk_scores) if risk_scores else 0.0,
             "success": max(success_scores) if success_scores else 0.0,
@@ -831,7 +831,7 @@ class BEMManager:
             if conflict:
                 return f"[{mem.tenant_id} memory] {conflict}"
         return None
-    
+
     def add_experience(
         self,
         embedding: np.ndarray,
@@ -859,7 +859,7 @@ class BEMManager:
             domain_id=domain_id,
             **kwargs
         )
-        
+
 
     def vacuum_all(self, max_size: int = 10000, ttl_days: Optional[int] = 90):
         """Run memory hygiene on all managed memories."""
