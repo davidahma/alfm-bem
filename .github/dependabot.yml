@@ -8,3 +8,10 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
+    exclude-paths:
+      - "constraints/research.txt" # Versions used to reproduce the published results.
+    groups:
+      text-encoders:
+        patterns:
+          - "sentence-transformers"
+          - "transformers"
