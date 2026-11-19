@@ -53,6 +53,8 @@ make test
 make reproduce
 ```
 
+The digits check requires the published review counts and stream selection hashes. It reports the largest calibration mean-squared-error difference between runs. Across numerical backends that diagnostic allows relative tolerance `1e-5` and absolute tolerance `1e-7`.
+
 To write fresh result files for inspection:
 
 ```sh

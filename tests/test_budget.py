@@ -125,6 +125,11 @@ class TestBudget(unittest.TestCase):
                 np.testing.assert_allclose(mixed, 0.5 * (frozen + scale * raw))
 
     def test_check_preserves_counts_and_allows_float_roundoff(self):
+        budget.compare({"calibration_mse": 1.0}, {"calibration_mse": 1.000001})
+        with self.assertRaises(ValueError):
+            budget.compare({"memory_weight": 1.0}, {"memory_weight": 1.000001})
+        with self.assertRaises(ValueError):
+            budget.compare({"calibration_mse": 1.0}, {"calibration_mse": 1.001})
         budget.compare({"count": 50, "mean": [0.500000001]}, {"count": 50, "mean": [0.5]})
         for invalid in ({"count": 51}, {"count": 50, "mean": [0.52]},
                         {"count": 50.000000001, "mean": [0.5]}):

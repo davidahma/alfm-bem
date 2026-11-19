@@ -376,11 +376,16 @@ def compare(expected, actual, path="$"):
             compare(left, right, f"{path}[{i}]")
         return
     if isinstance(actual, float) and type(expected) in (float, int):
+        # L-BFGS fits on different BLAS backends can stop at slightly different
+        # probabilities. Only the descriptive calibration loss has this tolerance.
+        if path.endswith(".calibration_mse") and np.isclose(
+                expected, actual, rtol=1e-5, atol=1e-7):
+            return
         if np.isclose(expected, actual, rtol=1e-7, atol=1e-8):
             return
     elif isinstance(actual, (str, int)) and type(expected) is type(actual) and expected == actual:
         return
-    raise ValueError(f"Benchmark mismatch at {path}")
+    raise ValueError(f"Benchmark mismatch at {path}. Expected {expected!r}, measured {actual!r}")
 
 
 def main():
@@ -392,10 +397,18 @@ def main():
     result = benchmark()
     if args.check:
         try:
-            compare(json.loads(args.check.read_text()), result)
+            expected = json.loads(args.check.read_text())
+            compare(expected, result)
         except (OSError, ValueError) as err:
             parser.exit(1, f"{err}\n")
-        print(f"Reproduced {len(result['runs'])} paired seeds: {args.check}")
+        max_delta = max(
+            abs(actual["calibrated_bem_joint_blend"][obj]["calibration_mse"]
+                - reference["calibrated_bem_joint_blend"][obj]["calibration_mse"])
+            for actual, reference in zip(result["runs"], expected["runs"])
+            for obj in OBJECTIVES
+        )
+        print(f"Reproduced {len(result['runs'])} paired seeds: {args.check}"
+              f" (maximum absolute calibration MSE difference {max_delta:.3g})")
     else:
         output = json.dumps(result, indent=2, allow_nan=False) + "\n"
         if args.output:
