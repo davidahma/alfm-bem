@@ -1,0 +1,253 @@
+\section{Controls for outcome prediction, familiarity and referral}
+\label{app:controlref}
+
+\subsection{A symmetric vote on the original synthetic task}
+
+Each memory contains 500 failures and 500 successes in 64 dimensions. The
+test set contains 100 fresh examples of each sign drawn around the same
+centers. For each sign, 70 examples come from its own centers with Gaussian
+coordinate noise of standard deviation 0.05. The other 30 come from the
+opposite centers with noise of standard deviation 0.10. The training set has
+the same proportions. All observed vectors are normalized after adding noise.
+
+The original generator draws ten failure centers and five success centers,
+then divides each of the two matrices by its Frobenius norm. The mean squared
+length of a center is consequently about $1/10$ for failure centers and $1/5$
+for success centers. The same coordinate noise obscures a typical failure
+center more strongly. A second run normalizes each center to unit length
+before adding noise, using the same random draws in the same order. This
+changes both the relative signal strengths and the absolute cluster separation.
+
+The neighbor vote takes the ten highest cosine similarities in the mixed
+memory, keeping those above 0.5. Its failure and success scores are the
+fractions of those neighbors with the corresponding outcome sign. Both
+scores are zero for an empty neighborhood. We flag a sign when its score
+exceeds 0.3. BEM uses the same similarity and decision thresholds.
+The failure-only comparator flags a failure for any stored failure above
+the similarity cutoff and always emits zero success evidence. Binary F1
+scores the sign of the incoming case. A query can cross both thresholds.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{Original centers} & \multicolumn{2}{c}{Unit centers} \\
+Method & Failure F1 & Success F1 & Failure F1 & Success F1 \\
+\midrule
+Neighbor vote & $0.744\pm0.021$ & $0.734\pm0.016$ & 0.700 & 0.700 \\
+Failure only  & $0.568\pm0.022$ & $0.000\pm0.000$ & 0.667 & 0.000 \\
+BEM           & $0.588\pm0.033$ & $0.716\pm0.013$ & 0.667 & 0.667 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Entries give the mean and population standard deviation over seeds 42, 123,
+456, 789 and 1011. The unit-center columns have zero observed dispersion.
+In that setting BEM flags every query on both signs. Each task has 100 true
+positives and 100 false positives, giving F1 of $2/3$. On the original
+geometry the vote has higher mean F1 on both signs. Ordinary cosine retrieval
+supports a positive vote given access to the stored outcomes.
+
+\paragraph{Coverage on fresh in-distribution queries.}
+For each seed the in-distribution (ID) queries are 200 additional draws from
+the core failure centers. One out-of-distribution (OOD) set contains 200
+vectors near a single new direction. Another contains 200 normalized
+isotropic Gaussian draws. AUROC is the probability that a random ID score
+exceeds a random OOD score, with half credit for a tie. The table averages
+the five seed-level AUROCs on the original geometry.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Familiarity score & Clustered OOD & Uniform OOD \\
+\midrule
+Maximum cosine, all experiences & 0.9911 & 0.9885 \\
+Maximum cosine, failures only   & 0.9920 & 0.9917 \\
+BEM coverage, bandwidth 0.3     & 0.8792 & 0.9552 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+With unit centers, every entry is 1.0000. The ID sampling rule favors cases
+close to a known failure mode. These AUROCs measure familiarity for that
+population. Downstream error detection would require observed errors.
+
+\paragraph{A threshold can hide separation.}
+In a separate 768-dimensional control, seed 42 generates ten unit failure
+centers, adds coordinate noise of standard deviation 0.06 to failures, and
+draws successes isotropically. Maximum cosine to a stored failure has AUROC
+1 on 100 fresh failures and 100 fresh successes. A cutoff of 0.50 detects
+0 failures, 0.30 detects 94, and both 0.25 and 0.20 detect all 100. All four
+cutoffs flag zero successes. The raw vectors already separate the classes
+under this generator.
+
+\subsection{Which claims were referred?}
+
+A simulated payer applies three deterministic rules involving procedure,
+diagnosis, age and modifier. A fixed random embedding sums vectors for the
+procedure, diagnosis, modifier and decade of age. The payer uses exact age,
+so two cases in one age bucket can have different outcomes. Each policy
+acts before seeing the current outcome. BEM refers when risk exceeds 0.6
+using a neighbor cutoff of 0.85. The failure-only comparator refers when
+any previously observed denial has cosine similarity above 0.85.
+
+\begin{center}
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Seed 42 & Policy & Submitted & Denied on submit & Referred & Payable referrals \\
+\midrule
+All 2,000 & Always submit & 2,000 & 231 & 0 & 0 \\
+          & Either filter & 1,775 & 45  & 225 & 39 \\
+Final 100 & Always submit & 100   & 16  & 0 & 0 \\
+          & Either filter & 84    & 1   & 16 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Under either filter the full-stream denial rate among submissions is
+$45/1775=2.54\%$. The filter refers 186 claims that would be denied and
+39 that would be paid. Over the final 100 incoming claims the comparison
+is $16/100$ versus $1/84$, with 16 referrals. The simulator supplies the
+counterfactual outcome on a referral for evaluation.
+
+We replay each of the five 2,000-claim streams twice. In the first replay
+each agent observes every outcome after acting. In the second it learns only
+from its own submissions. BEM and the failure-only rule agree on all 10,000
+decisions within each replay. Feedback availability still matters. At seed
+789 the two policies each refer 220 cases under full feedback and 199 under
+submission-only feedback. Payable referrals fall from 35 to 14, while 45
+submitted claims are denied in each replay. Review cost, recovery after
+referral and real payer performance require other observations.
+
+\subsection{Querying an oracle}
+
+The original query simulation draws 1,000 Gaussian points in two dimensions
+at seed 42. Labels indicate the interior of the unit circle. Prediction
+correctness is sampled from a known confidence function that rises from
+0.5 on the boundary to 1.0 at radial distance 0.2 from it. The same predictions
+underlie all rows. A referral either removes a case from the automatic
+denominator or supplies its true label immediately.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Rule & Referred & Errors referred & Automatic accuracy & With oracle, all cases \\
+\midrule
+Trust all & 0 & 0 & $934/1000$ & $934/1000$ \\
+Confidence below 0.7 & 109 & 48 & $873/891$ & $982/1000$ \\
+Lowest 150 confidences & 150 & 58 & $842/850$ & $992/1000$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The 150 queries correct 58 of the original 66 errors. At either referral
+budget, deferring those same cases to an equally accurate reviewer gives
+the same all-case result. The oracle answers only the referred case.
+Measuring what a system learns from review would require an update and
+observations on subsequent predictions.
+
+\subsection{Text controls with a frozen encoder}
+
+The optional CPU experiment uses frozen 384-dimensional MiniLM sentence
+embeddings. On the authored fixture, memory holds seven examples per outcome
+sign. Three more of each sign are held out, with five separately authored
+OOD sentences. Raw BEM coverage has AUROC 1.000 when the ID queries are
+the stored sentences themselves and 0.800 on the six held-out ID sentences.
+The 64-dimensional projection fits five sentences of each sign and uses
+two per sign for validation. Its corresponding coverage AUROCs at seed
+42 are 1.000 and 0.533. The raw failure score flags none of the six held-out
+cases and the projected score flags all six. Only 30 ID--OOD pairs contribute
+to each held-out AUROC.
+
+\paragraph{A corpus with two different kinds of label.}
+The 20 Newsgroups by-date corpus supplies observed topic labels. We use
+space, medicine and electronics for the science domain, and baseball and
+hockey for the sports domain. The historical failure proxy labels a science
+document positive if its lowercased text contains \texttt{orbit} or
+\texttt{circuit}. It measures substring retrieval. Topic discrimination
+uses the newsgroup names. Measuring a predictor's failure on a user request
+would require a separate outcome label.
+
+We remove headers, footers and quoted text with the scikit-learn loader and
+split each science outcome sign separately at seed 42. Of 4,954 documents,
+255 keyword and 2,113 other science documents form the training pool. The
+original balanced index contains all 255 keyword documents and 255 other
+documents. A separate 64-dimensional projection is trained for 20 full-batch
+updates on this balanced subset. The 593 science test documents contain 64
+keyword cases and 529 others. All 1,993 sports documents are outside the
+training domain. The stricter evaluation also removes blank bodies, bodies
+seen anywhere in science training and repeated evaluation bodies, comparing
+the stripped strings exactly. This leaves 64 keyword, 510 other science and
+1,931 sports queries. Related posts with different text can still occur in
+both training and evaluation.
+
+\begin{center}
+\small
+\begin{tabular}{llrrr}
+\toprule
+Index & Representation & Keyword queries & Other science & Keyword AUROC \\
+\midrule
+Balanced & Raw       & 0.731 & 0.398 & 0.774 \\
+Balanced & Projected & 0.950 & 0.764 & 0.682 \\
+Full     & Raw       & 0.406 & 0.097 & 0.787 \\
+Full     & Projected & 0.756 & 0.388 & 0.783 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The middle columns give the mean fraction of keyword documents among five
+cosine neighbors on unique unseen bodies. Projection raises this fraction
+for both query classes. With the balanced index, ranking the keyword label
+becomes less accurate even as retrieval on keyword queries alone rises.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Representation & Maximum cosine & Euclidean log KDE & Public BEM coverage \\
+\midrule
+Raw       & 0.946 & 0.857 & 0.897 \\
+Projected & 0.735 & 0.692 & 0.691 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These AUROCs compare the 510 unique non-keyword science bodies with 1,931
+sports bodies, using the same balanced index throughout. The Euclidean
+Gaussian KDE uses unit vectors and bandwidth 0.5. Public BEM coverage uses
+its calibrated and clipped cosine-distance kernel at bandwidth 0.3.
+On the unfiltered document split, raw maximum cosine scores 0.919 and
+projected Euclidean log KDE scores 0.683. Comparing only those two numbers
+changes the representation and the estimator together. The full result file
+reports all six combinations for both evaluation populations.
+
+\paragraph{Reproduction.}
+From the repository root with the project environment active, run
+\begin{verbatim}
+python -m experiments.controls --output results/controls.json
+python -m experiments.controls --check results/controls.json
+\end{verbatim}
+The second command reruns every synthetic control and compares all fields.
+Counts must match exactly. Floating-point tolerance is $10^{-7}$ absolute
+or $10^{-6}$ relative. These CPU controls use the project dependencies,
+including NumPy and scikit-learn. The reference run used Python 3.13.7,
+NumPy 2.3.5 and scikit-learn 1.7.2 on an Apple M4 Pro and took about five
+seconds per command.
+
+The optional text run obtains its corpus and weights from the
+\href{https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html}{scikit-learn 20 Newsgroups loader}
+and the
+\href{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/c9745ed1d9f207416be6d2e6f8de32d1f16199bf}{pinned MiniLM model revision}.
+The release contains aggregate measurements. To populate local caches and
+reproduce the text results, run
+\begin{verbatim}
+python -m pip install -c constraints/research.txt -e '.[text]'
+python -m experiments.real_embeddings --output results/text.json
+\end{verbatim}
+After the first run, add \texttt{--offline} to require cached inputs.
+The reference run used Python 3.14.0, PyTorch 2.9.1, Sentence Transformers
+5.1.2 and Transformers 4.57.3, taking about 24 seconds with cached inputs on
+the same CPU. The result file records the model revision, numerical package
+versions and a SHA-256 digest of the ordered topic labels and processed texts.

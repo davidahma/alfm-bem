@@ -1,0 +1,1486 @@
+{
+  "schema_version": 1,
+  "ablation": {
+    "train_per_sign": 500,
+    "test_per_sign": 100,
+    "dimension": 64,
+    "id_core_failures": 200,
+    "ood_per_family": 200,
+    "original_frobenius": {
+      "by_seed": [
+        {
+          "seed": 42,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 58,
+                "fp": 2,
+                "fn": 42,
+                "tn": 98,
+                "precision": 0.9666666666666667,
+                "recall": 0.58,
+                "f1": 0.725
+              },
+              "success": {
+                "tp": 71,
+                "fp": 19,
+                "fn": 29,
+                "tn": 81,
+                "precision": 0.7888888888888889,
+                "recall": 0.71,
+                "f1": 0.7473684210526316
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 61,
+                "fp": 62,
+                "fn": 39,
+                "tn": 38,
+                "precision": 0.4959349593495935,
+                "recall": 0.61,
+                "f1": 0.547085201793722
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 57,
+                "fp": 48,
+                "fn": 43,
+                "tn": 52,
+                "precision": 0.5428571428571428,
+                "recall": 0.57,
+                "f1": 0.5560975609756098
+              },
+              "success": {
+                "tp": 71,
+                "fp": 25,
+                "fn": 29,
+                "tn": 75,
+                "precision": 0.7395833333333334,
+                "recall": 0.71,
+                "f1": 0.7244897959183674
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 0.998425,
+              "uniform_auroc": 0.99515
+            },
+            "max_failure": {
+              "clustered_auroc": 0.9998,
+              "uniform_auroc": 0.995625
+            },
+            "bem": {
+              "clustered_auroc": 0.993075,
+              "uniform_auroc": 0.9692000000000001
+            }
+          }
+        },
+        {
+          "seed": 123,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 65,
+                "fp": 2,
+                "fn": 35,
+                "tn": 98,
+                "precision": 0.9701492537313433,
+                "recall": 0.65,
+                "f1": 0.7784431137724551
+              },
+              "success": {
+                "tp": 71,
+                "fp": 22,
+                "fn": 29,
+                "tn": 78,
+                "precision": 0.7634408602150538,
+                "recall": 0.71,
+                "f1": 0.7357512953367875
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 71,
+                "fp": 64,
+                "fn": 29,
+                "tn": 36,
+                "precision": 0.5259259259259259,
+                "recall": 0.71,
+                "f1": 0.6042553191489362
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 67,
+                "fp": 41,
+                "fn": 33,
+                "tn": 59,
+                "precision": 0.6203703703703703,
+                "recall": 0.67,
+                "f1": 0.6442307692307693
+              },
+              "success": {
+                "tp": 71,
+                "fp": 26,
+                "fn": 29,
+                "tn": 74,
+                "precision": 0.7319587628865979,
+                "recall": 0.71,
+                "f1": 0.7208121827411168
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 0.998275,
+              "uniform_auroc": 0.9894
+            },
+            "max_failure": {
+              "clustered_auroc": 0.998475,
+              "uniform_auroc": 0.992675
+            },
+            "bem": {
+              "clustered_auroc": 0.86555,
+              "uniform_auroc": 0.956075
+            }
+          }
+        },
+        {
+          "seed": 456,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 59,
+                "fp": 2,
+                "fn": 41,
+                "tn": 98,
+                "precision": 0.9672131147540983,
+                "recall": 0.59,
+                "f1": 0.7329192546583851
+              },
+              "success": {
+                "tp": 71,
+                "fp": 17,
+                "fn": 29,
+                "tn": 83,
+                "precision": 0.8068181818181818,
+                "recall": 0.71,
+                "f1": 0.7553191489361702
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 62,
+                "fp": 60,
+                "fn": 38,
+                "tn": 40,
+                "precision": 0.5081967213114754,
+                "recall": 0.62,
+                "f1": 0.5585585585585585
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 60,
+                "fp": 50,
+                "fn": 40,
+                "tn": 50,
+                "precision": 0.5454545454545454,
+                "recall": 0.6,
+                "f1": 0.5714285714285714
+              },
+              "success": {
+                "tp": 71,
+                "fp": 23,
+                "fn": 29,
+                "tn": 77,
+                "precision": 0.7553191489361702,
+                "recall": 0.71,
+                "f1": 0.7319587628865979
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 0.997675,
+              "uniform_auroc": 0.993775
+            },
+            "max_failure": {
+              "clustered_auroc": 0.99985,
+              "uniform_auroc": 0.9948250000000001
+            },
+            "bem": {
+              "clustered_auroc": 0.9927750000000001,
+              "uniform_auroc": 0.974275
+            }
+          }
+        },
+        {
+          "seed": 789,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 59,
+                "fp": 4,
+                "fn": 41,
+                "tn": 96,
+                "precision": 0.9365079365079365,
+                "recall": 0.59,
+                "f1": 0.7239263803680982
+              },
+              "success": {
+                "tp": 70,
+                "fp": 26,
+                "fn": 30,
+                "tn": 74,
+                "precision": 0.7291666666666666,
+                "recall": 0.7,
+                "f1": 0.7142857142857143
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 62,
+                "fp": 65,
+                "fn": 38,
+                "tn": 35,
+                "precision": 0.4881889763779528,
+                "recall": 0.62,
+                "f1": 0.5462555066079295
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 58,
+                "fp": 49,
+                "fn": 42,
+                "tn": 51,
+                "precision": 0.5420560747663551,
+                "recall": 0.58,
+                "f1": 0.5603864734299517
+              },
+              "success": {
+                "tp": 70,
+                "fp": 28,
+                "fn": 30,
+                "tn": 72,
+                "precision": 0.7142857142857143,
+                "recall": 0.7,
+                "f1": 0.7070707070707071
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 0.96675,
+              "uniform_auroc": 0.976775
+            },
+            "max_failure": {
+              "clustered_auroc": 0.9634999999999999,
+              "uniform_auroc": 0.9826999999999999
+            },
+            "bem": {
+              "clustered_auroc": 0.6545000000000001,
+              "uniform_auroc": 0.939275
+            }
+          }
+        },
+        {
+          "seed": 1011,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 64,
+                "fp": 5,
+                "fn": 36,
+                "tn": 95,
+                "precision": 0.927536231884058,
+                "recall": 0.64,
+                "f1": 0.757396449704142
+              },
+              "success": {
+                "tp": 70,
+                "fp": 25,
+                "fn": 30,
+                "tn": 75,
+                "precision": 0.7368421052631579,
+                "recall": 0.7,
+                "f1": 0.717948717948718
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 66,
+                "fp": 61,
+                "fn": 34,
+                "tn": 39,
+                "precision": 0.5196850393700787,
+                "recall": 0.66,
+                "f1": 0.5814977973568282
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 63,
+                "fp": 45,
+                "fn": 37,
+                "tn": 55,
+                "precision": 0.5833333333333334,
+                "recall": 0.63,
+                "f1": 0.6057692307692307
+              },
+              "success": {
+                "tp": 70,
+                "fp": 31,
+                "fn": 30,
+                "tn": 69,
+                "precision": 0.693069306930693,
+                "recall": 0.7,
+                "f1": 0.6965174129353234
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 0.9943000000000001,
+              "uniform_auroc": 0.987375
+            },
+            "max_failure": {
+              "clustered_auroc": 0.998475,
+              "uniform_auroc": 0.9929000000000001
+            },
+            "bem": {
+              "clustered_auroc": 0.88995,
+              "uniform_auroc": 0.937075
+            }
+          }
+        }
+      ],
+      "retrieval_summary": {
+        "neighbor_vote": {
+          "failure": {
+            "mean_f1": 0.7435370397006161,
+            "sd_f1": 0.021220058493208065
+          },
+          "success": {
+            "mean_f1": 0.7341346595120044,
+            "sd_f1": 0.016015579158763744
+          }
+        },
+        "failure_only": {
+          "failure": {
+            "mean_f1": 0.567530476693195,
+            "sd_f1": 0.022337990208514024
+          },
+          "success": {
+            "mean_f1": 0.0,
+            "sd_f1": 0.0
+          }
+        },
+        "bem": {
+          "failure": {
+            "mean_f1": 0.5875825211668266,
+            "sd_f1": 0.03326156411767529
+          },
+          "success": {
+            "mean_f1": 0.7161697723104226,
+            "sd_f1": 0.012720654134933286
+          }
+        }
+      }
+    },
+    "unit_centers": {
+      "by_seed": [
+        {
+          "seed": 42,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              },
+              "success": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "max_failure": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "bem": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            }
+          }
+        },
+        {
+          "seed": 123,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              },
+              "success": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "max_failure": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "bem": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            }
+          }
+        },
+        {
+          "seed": 456,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              },
+              "success": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "max_failure": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "bem": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            }
+          }
+        },
+        {
+          "seed": 789,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              },
+              "success": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "max_failure": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "bem": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            }
+          }
+        },
+        {
+          "seed": 1011,
+          "retrieval": {
+            "neighbor_vote": {
+              "failure": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              },
+              "success": {
+                "tp": 70,
+                "fp": 30,
+                "fn": 30,
+                "tn": 70,
+                "precision": 0.7,
+                "recall": 0.7,
+                "f1": 0.7
+              }
+            },
+            "failure_only": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 100,
+                "tn": 100,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "bem": {
+              "failure": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              },
+              "success": {
+                "tp": 100,
+                "fp": 100,
+                "fn": 0,
+                "tn": 0,
+                "precision": 0.5,
+                "recall": 1.0,
+                "f1": 0.6666666666666666
+              }
+            }
+          },
+          "coverage": {
+            "max_all": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "max_failure": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            },
+            "bem": {
+              "clustered_auroc": 1.0,
+              "uniform_auroc": 1.0
+            }
+          }
+        }
+      ],
+      "retrieval_summary": {
+        "neighbor_vote": {
+          "failure": {
+            "mean_f1": 0.7,
+            "sd_f1": 0.0
+          },
+          "success": {
+            "mean_f1": 0.7,
+            "sd_f1": 0.0
+          }
+        },
+        "failure_only": {
+          "failure": {
+            "mean_f1": 0.6666666666666666,
+            "sd_f1": 0.0
+          },
+          "success": {
+            "mean_f1": 0.0,
+            "sd_f1": 0.0
+          }
+        },
+        "bem": {
+          "failure": {
+            "mean_f1": 0.6666666666666666,
+            "sd_f1": 0.0
+          },
+          "success": {
+            "mean_f1": 0.6666666666666666,
+            "sd_f1": 0.0
+          }
+        }
+      }
+    }
+  },
+  "raw_768": {
+    "seed": 42,
+    "train_per_class": 500,
+    "test_per_class": 100,
+    "auroc": 1.0,
+    "thresholds": {
+      "0.2": {
+        "tp": 100,
+        "fp": 0,
+        "fn": 0,
+        "tn": 100,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "0.25": {
+        "tp": 100,
+        "fp": 0,
+        "fn": 0,
+        "tn": 100,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "0.3": {
+        "tp": 94,
+        "fp": 0,
+        "fn": 6,
+        "tn": 100,
+        "precision": 1.0,
+        "recall": 0.94,
+        "f1": 0.9690721649484536
+      },
+      "0.5": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 100,
+        "tn": 100,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    }
+  },
+  "healthcare": [
+    {
+      "seed": 42,
+      "trust_all": {
+        "overall": {
+          "claims": 2000,
+          "would_deny": 231,
+          "submitted": 2000,
+          "denied_submitted": 231,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.1155
+        },
+        "final_100": {
+          "claims": 100,
+          "would_deny": 16,
+          "submitted": 100,
+          "denied_submitted": 16,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.16
+        }
+      },
+      "all_outcomes": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 231,
+            "submitted": 1775,
+            "denied_submitted": 45,
+            "referred": 225,
+            "would_pay_referred": 39,
+            "denial_rate_among_submitted": 0.02535211267605634
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 16,
+            "submitted": 84,
+            "denied_submitted": 1,
+            "referred": 16,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011904761904761904
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 231,
+            "submitted": 1775,
+            "denied_submitted": 45,
+            "referred": 225,
+            "would_pay_referred": 39,
+            "denial_rate_among_submitted": 0.02535211267605634
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 16,
+            "submitted": 84,
+            "denied_submitted": 1,
+            "referred": 16,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011904761904761904
+          }
+        }
+      },
+      "submitted_only": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 231,
+            "submitted": 1775,
+            "denied_submitted": 45,
+            "referred": 225,
+            "would_pay_referred": 39,
+            "denial_rate_among_submitted": 0.02535211267605634
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 16,
+            "submitted": 84,
+            "denied_submitted": 1,
+            "referred": 16,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011904761904761904
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 231,
+            "submitted": 1775,
+            "denied_submitted": 45,
+            "referred": 225,
+            "would_pay_referred": 39,
+            "denial_rate_among_submitted": 0.02535211267605634
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 16,
+            "submitted": 84,
+            "denied_submitted": 1,
+            "referred": 16,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011904761904761904
+          }
+        }
+      }
+    },
+    {
+      "seed": 123,
+      "trust_all": {
+        "overall": {
+          "claims": 2000,
+          "would_deny": 243,
+          "submitted": 2000,
+          "denied_submitted": 243,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.1215
+        },
+        "final_100": {
+          "claims": 100,
+          "would_deny": 8,
+          "submitted": 100,
+          "denied_submitted": 8,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.08
+        }
+      },
+      "all_outcomes": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 243,
+            "submitted": 1754,
+            "denied_submitted": 45,
+            "referred": 246,
+            "would_pay_referred": 48,
+            "denial_rate_among_submitted": 0.02565564424173318
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 8,
+            "submitted": 91,
+            "denied_submitted": 1,
+            "referred": 9,
+            "would_pay_referred": 2,
+            "denial_rate_among_submitted": 0.01098901098901099
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 243,
+            "submitted": 1754,
+            "denied_submitted": 45,
+            "referred": 246,
+            "would_pay_referred": 48,
+            "denial_rate_among_submitted": 0.02565564424173318
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 8,
+            "submitted": 91,
+            "denied_submitted": 1,
+            "referred": 9,
+            "would_pay_referred": 2,
+            "denial_rate_among_submitted": 0.01098901098901099
+          }
+        }
+      },
+      "submitted_only": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 243,
+            "submitted": 1754,
+            "denied_submitted": 45,
+            "referred": 246,
+            "would_pay_referred": 48,
+            "denial_rate_among_submitted": 0.02565564424173318
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 8,
+            "submitted": 91,
+            "denied_submitted": 1,
+            "referred": 9,
+            "would_pay_referred": 2,
+            "denial_rate_among_submitted": 0.01098901098901099
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 243,
+            "submitted": 1754,
+            "denied_submitted": 45,
+            "referred": 246,
+            "would_pay_referred": 48,
+            "denial_rate_among_submitted": 0.02565564424173318
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 8,
+            "submitted": 91,
+            "denied_submitted": 1,
+            "referred": 9,
+            "would_pay_referred": 2,
+            "denial_rate_among_submitted": 0.01098901098901099
+          }
+        }
+      }
+    },
+    {
+      "seed": 456,
+      "trust_all": {
+        "overall": {
+          "claims": 2000,
+          "would_deny": 221,
+          "submitted": 2000,
+          "denied_submitted": 221,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.1105
+        },
+        "final_100": {
+          "claims": 100,
+          "would_deny": 13,
+          "submitted": 100,
+          "denied_submitted": 13,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.13
+        }
+      },
+      "all_outcomes": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 221,
+            "submitted": 1797,
+            "denied_submitted": 44,
+            "referred": 203,
+            "would_pay_referred": 26,
+            "denial_rate_among_submitted": 0.02448525319977741
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 13,
+            "submitted": 91,
+            "denied_submitted": 4,
+            "referred": 9,
+            "would_pay_referred": 0,
+            "denial_rate_among_submitted": 0.04395604395604396
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 221,
+            "submitted": 1797,
+            "denied_submitted": 44,
+            "referred": 203,
+            "would_pay_referred": 26,
+            "denial_rate_among_submitted": 0.02448525319977741
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 13,
+            "submitted": 91,
+            "denied_submitted": 4,
+            "referred": 9,
+            "would_pay_referred": 0,
+            "denial_rate_among_submitted": 0.04395604395604396
+          }
+        }
+      },
+      "submitted_only": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 221,
+            "submitted": 1797,
+            "denied_submitted": 44,
+            "referred": 203,
+            "would_pay_referred": 26,
+            "denial_rate_among_submitted": 0.02448525319977741
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 13,
+            "submitted": 91,
+            "denied_submitted": 4,
+            "referred": 9,
+            "would_pay_referred": 0,
+            "denial_rate_among_submitted": 0.04395604395604396
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 221,
+            "submitted": 1797,
+            "denied_submitted": 44,
+            "referred": 203,
+            "would_pay_referred": 26,
+            "denial_rate_among_submitted": 0.02448525319977741
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 13,
+            "submitted": 91,
+            "denied_submitted": 4,
+            "referred": 9,
+            "would_pay_referred": 0,
+            "denial_rate_among_submitted": 0.04395604395604396
+          }
+        }
+      }
+    },
+    {
+      "seed": 789,
+      "trust_all": {
+        "overall": {
+          "claims": 2000,
+          "would_deny": 230,
+          "submitted": 2000,
+          "denied_submitted": 230,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.115
+        },
+        "final_100": {
+          "claims": 100,
+          "would_deny": 12,
+          "submitted": 100,
+          "denied_submitted": 12,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.12
+        }
+      },
+      "all_outcomes": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 230,
+            "submitted": 1780,
+            "denied_submitted": 45,
+            "referred": 220,
+            "would_pay_referred": 35,
+            "denial_rate_among_submitted": 0.025280898876404494
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 87,
+            "denied_submitted": 0,
+            "referred": 13,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.0
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 230,
+            "submitted": 1780,
+            "denied_submitted": 45,
+            "referred": 220,
+            "would_pay_referred": 35,
+            "denial_rate_among_submitted": 0.025280898876404494
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 87,
+            "denied_submitted": 0,
+            "referred": 13,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.0
+          }
+        }
+      },
+      "submitted_only": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 230,
+            "submitted": 1801,
+            "denied_submitted": 45,
+            "referred": 199,
+            "would_pay_referred": 14,
+            "denial_rate_among_submitted": 0.02498611882287618
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 88,
+            "denied_submitted": 0,
+            "referred": 12,
+            "would_pay_referred": 0,
+            "denial_rate_among_submitted": 0.0
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 230,
+            "submitted": 1801,
+            "denied_submitted": 45,
+            "referred": 199,
+            "would_pay_referred": 14,
+            "denial_rate_among_submitted": 0.02498611882287618
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 88,
+            "denied_submitted": 0,
+            "referred": 12,
+            "would_pay_referred": 0,
+            "denial_rate_among_submitted": 0.0
+          }
+        }
+      }
+    },
+    {
+      "seed": 1011,
+      "trust_all": {
+        "overall": {
+          "claims": 2000,
+          "would_deny": 228,
+          "submitted": 2000,
+          "denied_submitted": 228,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.114
+        },
+        "final_100": {
+          "claims": 100,
+          "would_deny": 12,
+          "submitted": 100,
+          "denied_submitted": 12,
+          "referred": 0,
+          "would_pay_referred": 0,
+          "denial_rate_among_submitted": 0.12
+        }
+      },
+      "all_outcomes": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 228,
+            "submitted": 1788,
+            "denied_submitted": 47,
+            "referred": 212,
+            "would_pay_referred": 31,
+            "denial_rate_among_submitted": 0.026286353467561523
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 88,
+            "denied_submitted": 1,
+            "referred": 12,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011363636363636364
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 228,
+            "submitted": 1788,
+            "denied_submitted": 47,
+            "referred": 212,
+            "would_pay_referred": 31,
+            "denial_rate_among_submitted": 0.026286353467561523
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 88,
+            "denied_submitted": 1,
+            "referred": 12,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011363636363636364
+          }
+        }
+      },
+      "submitted_only": {
+        "decision_disagreements": 0,
+        "bem": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 228,
+            "submitted": 1788,
+            "denied_submitted": 47,
+            "referred": 212,
+            "would_pay_referred": 31,
+            "denial_rate_among_submitted": 0.026286353467561523
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 88,
+            "denied_submitted": 1,
+            "referred": 12,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011363636363636364
+          }
+        },
+        "max_failure": {
+          "overall": {
+            "claims": 2000,
+            "would_deny": 228,
+            "submitted": 1788,
+            "denied_submitted": 47,
+            "referred": 212,
+            "would_pay_referred": 31,
+            "denial_rate_among_submitted": 0.026286353467561523
+          },
+          "final_100": {
+            "claims": 100,
+            "would_deny": 12,
+            "submitted": 88,
+            "denied_submitted": 1,
+            "referred": 12,
+            "would_pay_referred": 1,
+            "denial_rate_among_submitted": 0.011363636363636364
+          }
+        }
+      }
+    }
+  ],
+  "query": {
+    "seed": 42,
+    "n": 1000,
+    "budget": 150,
+    "trust_errors": 66,
+    "trust_accuracy": 0.934,
+    "confidence_below_0.7": {
+      "referred": 109,
+      "automatic": 891,
+      "errors_referred": 48,
+      "errors_automatic": 18,
+      "accuracy_automatic": 0.9797979797979798,
+      "accuracy_with_perfect_oracle": 0.982
+    },
+    "lowest_confidence_budget": {
+      "referred": 150,
+      "automatic": 850,
+      "errors_referred": 58,
+      "errors_automatic": 8,
+      "accuracy_automatic": 0.9905882352941177,
+      "accuracy_with_perfect_oracle": 0.992
+    }
+  }
+}

@@ -1,0 +1,141 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,allcolors=blue!40!black]{hyperref}
+\hypersetup{pdftitle={ALFM-BEM: Outcome-conditioned experience memory for frozen predictors},pdfauthor={David Ahmann}}
+\setlength{\emergencystretch}{2em}
+\title{\textbf{ALFM-BEM}\\[3pt]\large Outcome-conditioned experience memory for frozen predictors}
+\author{David Ahmann\\ \small Independent researcher, Toronto, Canada}
+\date{Open research preprint \quad$\cdot$\quad November 18, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A model operator with a limited review budget must choose which predictions to
+accept and which to refer. Bidirectional Experience Memory (BEM) stores outcomes
+alongside embeddings and retrieves evidence of both success and failure while
+the underlying predictor stays fixed. We evaluate the memory against its
+simplest controls. In a five-seed synthetic task, BEM obtains failure and
+success F1 of 0.588 and 0.716. An outcome vote over ordinary cosine neighbors
+obtains 0.744 and 0.734. A failure-only rule also reproduces the decisions of
+the BEM-based filter in a simulated claims stream. We further evaluate review
+allocation on held-out handwritten digits, with observed classifier errors,
+identical review budgets and a change in the decision policy.
+\input{abstract-result}
+We release the implementation, per-seed results and executable protocols.
+\end{abstract}
+
+\section{The decision problem}
+An operator can freeze a predictor yet change what happens to its predictions.
+For example, if similar cases have repeatedly failed, the operator may refer
+the next case for review. A failure among past accepted cases is an observation;
+the outcome a withheld prediction would have produced can remain unknown.
+Consequently, a fair evaluation must specify which decisions produce feedback
+and charge each method for the reviews it requests.
+
+ALFM-BEM (Adaptive Latent Feedback Model with Bidirectional Experience Memory)
+was originally proposed as a wrapper for frozen foundation models \citep{ahmann}.
+This study evaluates two narrower claims. First, how well do the memory scores
+identify the outcomes of unseen cases relative to an outcome-labeled neighbor
+vote? Second, when only a fixed number of reviews are available, which policy
+sends the cases on which review will help most? An improvement on the first
+question does not establish improvement on the second. In particular, a
+classifier can predict failure accurately at the extremes yet rank the cases
+near the review cutoff poorly.
+
+\section{What the memory provides}
+For a fixed representation $z$, the system stores normalized historical
+embeddings, signed outcomes, timestamps and case identifiers. A repeated case
+can update the corresponding entry. Separate read operations return supporting
+successes and failures. A familiarity score describes the position of a case
+relative to the stored embeddings. The public interface returns evidence and
+case records, allowing a caller to inspect which observations influenced a
+decision. Appendix~\ref{app:methodref} gives the score definitions and the
+conditions under which an optional adapter update admits a parameter bound.
+
+The full wrapper supports accepting a prediction, abstaining, escalating,
+and requesting information. These actions incur different costs. Asking a
+reviewer for a correct label can resolve an individual case immediately.
+A claim about learning from that review requires evaluating later cases whose
+labels were unavailable at decision time. The fixed-budget experiment isolates
+the choice of cases for review; it does not simulate a conversation or train
+a language model.
+
+\section{Experiments and results}
+\input{primary-result}
+\paragraph{Outcome prediction.}
+The binary classification metric used here scores the outcome of the incoming
+query. It does not assess the usefulness of a retrieved precedent to a model
+generating a new answer. In the original overlapping-cluster construction,
+a symmetric success vote over the same neighbors used to vote on failures
+has higher mean F1 for both outcomes. Representations, thresholds
+and the generation of the cluster centers materially affect this comparison.
+The executable controls in Appendix~\ref{app:controlref} preserve the
+distinction between the historical setup and the controls.
+
+\paragraph{Referral in a simulator.}
+In the canonical 2,000-claim stream, 231 of 2,000 submitted claims would be
+denied under always-submit. The memory-based filter submitted 1,775, of which
+45 were denied, and referred 225. In the final 100 cases the comparable
+figures are 16/100 and 1/84, with 16 cases referred. A failure-only
+neighbor rule makes the same decisions on the five tested streams.
+The simulated payer supplies counterfactual outcomes on withheld cases.
+These counts characterize a synthetic referral policy and cannot be
+used to estimate real claims performance or the cost of a human review.
+
+\section{Relationship to prior work}
+Selective classification explicitly trades coverage against risk
+\citep{selective}. This distinction motivates our common budget and the
+inclusion of a frozen-model confidence baseline. Memento learns to select
+cases with a frozen language model \citep{memento}. ReasoningBank distills
+strategies from successful and failed trajectories \citep{reasoningbank}.
+Storing both outcome signs therefore has precedent. Our experiments isolate
+the value of using their scores to allocate review.
+
+Learning on the Job measures how a frozen agent uses outcome feedback and
+corrections on later banking tasks \citep{job}. ReScopeBench tests the
+maintenance and reuse of experience under silent environment changes
+\citep{rescope}. Our controlled policy change similarly makes it possible
+for old evidence to become stale. Our digit experiment uses a classifier and
+a single explicit change. The agent studies evaluate additional capabilities,
+including language-based rule induction and multi-step interaction.
+
+\section{Limits and implications}
+A memory score can be inspected without being calibrated as a probability.
+A parameter norm bound controls a numerical update without establishing retention
+of earlier capabilities. Accuracy after referral depends on who reviews the
+case, how accurate that reviewer is and whether feedback returns. The experiment
+assigns feedback and review outcomes explicitly. Its uncertainty estimates
+describe variation across the specified repeated runs of one dataset.
+Transfer to another model, task family or reviewer population requires new
+evidence.
+
+For deployment research, the next experiment is a prospective stream of
+frozen-model decisions with actual task outcomes, delayed or missing feedback,
+and recorded review time. The relevant comparison is whether memory
+improves correct resolutions per incoming case at the same cost as a
+confidence rule or an outcome vote. For the released implementation,
+the present results establish reproducible reference points for that test.
+
+\paragraph{Availability.}
+The source, result records and build instructions accompany version 0.2.0 at
+\url{https://github.com/davidahma/alfm-bem}. The digit images are distributed
+through scikit-learn \citep{sklearn} from the optical recognition dataset
+\citep{digits}. The other core controls generate synthetic records. An
+optional text experiment evaluates keyword retrieval on 20 Newsgroups with
+the published MiniLM sentence encoder \citep{newsgroups,minilm}.
+The software is available under the MIT license. The paper and the author's
+result tables are available under CC BY 4.0. AI-assisted coding and editing
+tools were used to revise the implementation, develop comparative tests,
+and prepare this release.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\appendix
+\input{methods}
+\input{benchmark}
+\input{controls}
+\end{document}

@@ -1,0 +1,24 @@
+name: Reproduction discrepancy
+description: Report a difference from a published result.
+title: "Reproduction discrepancy in "
+body:
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and command
+      description: Include OS, Python, numerical package versions, and the exact command.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and observed result
+      description: Include the first differing metric or check and its dataset or seed.
+    validations:
+      required: true

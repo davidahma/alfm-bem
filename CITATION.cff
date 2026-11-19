@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite this version for the standalone implementation and revised preprint."
+title: "ALFM-BEM: Outcome-conditioned experience memory for frozen predictors"
+authors:
+  - family-names: Ahmann
+    given-names: David
+version: 0.2.0
+date-released: 2026-11-18
+type: software
+license: MIT
+repository-code: "https://github.com/davidahma/alfm-bem"
+url: "https://github.com/davidahma/alfm-bem/releases/tag/v0.2.0"
