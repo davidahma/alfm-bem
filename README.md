@@ -45,7 +45,7 @@ An outcome ranges from −1 to +1. Supply a case identifier and an embedding fro
 
 ## Reproduce the research
 
-Run these commands from the cloned repository with the environment active. The core experiments run on CPU and obtain their inputs from seeded generators and the digits data bundled with scikit-learn. The numerical constraints match the reference runs.
+Run these commands from the cloned repository with the environment active. The core experiments run on CPU and obtain their inputs from seeded generators and the digits data bundled with scikit-learn. CI reproduces the published results with the pinned numerical versions on Python 3.13 and tests compatibility with the latest allowed dependencies on Python 3.11.
 
 ```sh
 python -m pip install -c constraints/research.txt -e '.[research]'
