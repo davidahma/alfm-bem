@@ -2,4 +2,4 @@
 # The library itself supports broader dependency ranges in pyproject.toml.
 numpy==2.3.5
 scipy==1.16.3
-scikit-learn==1.7.2
+scikit-learn==1.9.1
